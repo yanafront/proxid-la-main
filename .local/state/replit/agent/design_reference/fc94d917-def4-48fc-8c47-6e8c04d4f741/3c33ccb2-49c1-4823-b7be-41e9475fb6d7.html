@@ -1,0 +1,625 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProxiD - Your startup won't die from lack of people</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'digital-lime': '#BFFF00',
+                    'electric-purple': '#8A2BE2',
+                    'cyber-orange': '#FF6B35',
+                    'neon-pink': '#FF073A',
+                    'deep-space': '#0D1B2A',
+                    'dark-bg': '#0B0B0B'
+                },
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif']
+                },
+                animation: {
+                    'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
+                    'float': 'float 6s ease-in-out infinite',
+                    'glitch': 'glitch 0.5s ease-in-out infinite alternate',
+                    'particle': 'particle 8s linear infinite',
+                    'swipe': 'swipe 3s ease-in-out infinite'
+                }
+            }
+        }
+    };
+    </script>
+    <style>
+        @keyframes pulse-glow {
+            from { box-shadow: 0 0 20px #BFFF00, 0 0 40px #BFFF00, 0 0 60px #BFFF00; }
+            to { box-shadow: 0 0 30px #BFFF00, 0 0 60px #BFFF00, 0 0 90px #BFFF00; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes particle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        @keyframes swipe {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(50px) rotate(5deg); }
+            50% { transform: translateX(-50px) rotate(-5deg); }
+            75% { transform: translateX(20px) rotate(2deg); }
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .holographic {
+            background: linear-gradient(45deg, #BFFF00, #8A2BE2, #FF6B35, #FF073A);
+            background-size: 300% 300%;
+            animation: holographic 3s ease infinite;
+        }
+
+        @keyframes holographic {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #BFFF00;
+            border-radius: 50%;
+            animation: particle 8s linear infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #BFFF00, #8A2BE2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .swipe-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .swipe-card:hover {
+            transform: scale(1.05) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(191, 255, 0, 0.3);
+        }
+
+        .magnetic-effect {
+            transition: transform 0.3s ease;
+        }
+
+        .magnetic-effect:hover {
+            transform: scale(1.1) translateZ(10px);
+        }
+
+        /* WebGL Particle Background */
+        .webgl-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0D1B2A 0%, #0B0B0B 100%);
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-inter text-white overflow-x-hidden">
+    <!-- WebGL Particle Background -->
+    <div class="webgl-bg">
+        <!-- @FUNCTIONALITY: WebGL particle system that forms ProxiD logo -->
+        <!-- Particles scattered around and forming logo -->
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; animation-delay: 7s;"></div>
+    </div>
+
+    <!-- @COMPONENT: Navigation -->
+    <nav class="fixed top-0 w-full z-50 glassmorphism">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black gradient-text">ProxiD</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="hover:text-digital-lime transition-colors">Features</a>
+                <a href="#pricing" class="hover:text-digital-lime transition-colors">Pricing</a>
+                <a href="#about" class="hover:text-digital-lime transition-colors">About</a>
+            </div>
+            <button class="holographic text-black px-6 py-2 rounded-full font-bold magnetic-effect">
+                Sign Up Free
+            </button>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center z-10">
+            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-tight">
+                <span class="gradient-text">Your startup won't die</span><br>
+                <span class="text-white animate-glitch">from lack of people.</span><br>
+                <span class="text-digital-lime">Not on our watch.</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-12 text-gray-300 max-w-2xl mx-auto">
+                The AI-powered talent exchange platform that matches startups with the perfect people in seconds, not months.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center mb-16">
+                <button class="bg-digital-lime text-black px-12 py-4 rounded-full font-bold text-lg animate-pulse-glow magnetic-effect">
+                    <i class="fas fa-rocket mr-2"></i>Try for Free
+                </button>
+                <button class="glassmorphism px-12 py-4 rounded-full font-bold text-lg magnetic-effect border border-electric-purple">
+                    <i class="fas fa-play mr-2"></i>Watch 30s Demo
+                </button>
+            </div>
+
+            <!-- Live Swipe Demo -->
+            <div class="max-w-md mx-auto relative">
+                <h3 class="text-xl font-bold mb-6 text-digital-lime">Live Talent Matching Demo</h3>
+                <div class="swipe-card glassmorphism p-6 rounded-2xl animate-swipe">
+                    <!-- Modern startup team working together in bright office -->
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300" alt="Startup team collaboration" class="w-full h-48 object-cover rounded-lg mb-4" data-mock-image="true">
+                    <h4 class="font-bold text-lg mb-2">Sarah Chen</h4>
+                    <p class="text-gray-300 mb-2">Full-Stack Developer</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-digital-lime font-bold">89% Match</span>
+                        <div class="flex space-x-2">
+                            <button class="bg-neon-pink p-2 rounded-full"><i class="fas fa-times"></i></button>
+                            <button class="bg-digital-lime text-black p-2 rounded-full"><i class="fas fa-heart"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating 3D Elements -->
+        <div class="absolute top-20 left-10 animate-float">
+            <div class="w-16 h-16 holographic rounded-lg opacity-50"></div>
+        </div>
+        <div class="absolute bottom-32 right-16 animate-float" style="animation-delay: 2s;">
+            <div class="w-12 h-12 bg-electric-purple rounded-full opacity-60"></div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: Problem Section -->
+    <section class="py-20 relative" id="problem">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 reveal">
+                <span class="gradient-text animate-glitch">The Problem</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                <div class="text-center reveal glassmorphism p-8 rounded-2xl magnetic-effect">
+                    <div class="text-6xl font-black text-neon-pink mb-4">40%</div>
+                    <p class="text-xl">of employee time is wasted on mismatched roles</p>
+                </div>
+                <div class="text-center reveal glassmorphism p-8 rounded-2xl magnetic-effect" style="animation-delay: 0.2s;">
+                    <div class="text-6xl font-black text-cyber-orange mb-4">67%</div>
+                    <p class="text-xl">of companies overpay for hiring through agencies</p>
+                </div>
+                <div class="text-center reveal glassmorphism p-8 rounded-2xl magnetic-effect" style="animation-delay: 0.4s;">
+                    <div class="text-6xl font-black text-electric-purple mb-4">3+</div>
+                    <p class="text-xl">months for interns to land their first job</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Problem Section -->
+
+    <!-- @COMPONENT: Solution Section -->
+    <section class="py-20" id="features">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-7xl font-black mb-8 reveal">
+                    <span class="gradient-text">Work finds you.</span><br>
+                    <span class="text-white">Not the other way around.</span>
+                </h2>
+                
+                <!-- Video Demo Placeholder -->
+                <div class="max-w-4xl mx-auto reveal glassmorphism rounded-3xl p-8 mb-12">
+                    <!-- Tech professionals collaborating in modern workspace -->
+                    <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Tech professionals collaborating" class="w-full h-64 object-cover rounded-2xl mb-4" data-mock-image="true">
+                    <p class="text-gray-400">// TODO: 8-second platform demo video showing swiping, video resumes, bench board, analytics</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="text-center reveal glassmorphism p-6 rounded-2xl magnetic-effect">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="font-bold text-xl mb-2 text-digital-lime">AI-Matching</h3>
+                    <p class="text-gray-300">89% accuracy in talent-role matching</p>
+                </div>
+                <div class="text-center reveal glassmorphism p-6 rounded-2xl magnetic-effect" style="animation-delay: 0.1s;">
+                    <div class="text-4xl mb-4">🎥</div>
+                    <h3 class="font-bold text-xl mb-2 text-electric-purple">Video Resumes</h3>
+                    <p class="text-gray-300">Save time with 60-second intros</p>
+                </div>
+                <div class="text-center reveal glassmorphism p-6 rounded-2xl magnetic-effect" style="animation-delay: 0.2s;">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 class="font-bold text-xl mb-2 text-cyber-orange">Talent Exchange</h3>
+                    <p class="text-gray-300">Share resources between companies</p>
+                </div>
+                <div class="text-center reveal glassmorphism p-6 rounded-2xl magnetic-effect" style="animation-delay: 0.3s;">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="font-bold text-xl mb-2 text-neon-pink">Real-time Analytics</h3>
+                    <p class="text-gray-300">Track hiring performance live</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Solution Section -->
+
+    <!-- @COMPONENT: Target Audience Section -->
+    <section class="py-20" id="audience">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 reveal gradient-text">
+                Who It's For
+            </h2>
+
+            <!-- Interactive Slider -->
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="flex justify-center mb-12 glassmorphism rounded-full p-2">
+                    <button class="audience-btn active px-6 py-3 rounded-full font-bold transition-all" data-target="founder">
+                        I'm a Founder
+                    </button>
+                    <button class="audience-btn px-6 py-3 rounded-full font-bold transition-all" data-target="intern">
+                        I'm an Intern
+                    </button>
+                    <button class="audience-btn px-6 py-3 rounded-full font-bold transition-all" data-target="hr">
+                        I'm in HR
+                    </button>
+                    <button class="audience-btn px-6 py-3 rounded-full font-bold transition-all" data-target="freelancer">
+                        I'm a Freelancer
+                    </button>
+                </div>
+
+                <div class="audience-content glassmorphism rounded-3xl p-12 text-center">
+                    <div id="founder" class="audience-panel active">
+                        <h3 class="text-3xl font-black mb-6 text-digital-lime">"Our release is on fire. Our team is not. Let's fix that."</h3>
+                        <!-- Startup team working intensively in modern office -->
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Startup team working" class="w-full h-48 object-cover rounded-xl mb-6" data-mock-image="true">
+                        <p class="text-xl text-gray-300">Scale fast with pre-vetted talent that fits your culture and vision.</p>
+                    </div>
+                    <div id="intern" class="audience-panel hidden">
+                        <h3 class="text-3xl font-black mb-6 text-electric-purple">"Get hired faster than you can say 'portfolio'."</h3>
+                        <!-- Young professional working remotely on laptop -->
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Young professional working" class="w-full h-48 object-cover rounded-xl mb-6" data-mock-image="true">
+                        <p class="text-xl text-gray-300">Skip the application void. Get matched with startups that want your skills.</p>
+                    </div>
+                    <div id="hr" class="audience-panel hidden">
+                        <h3 class="text-3xl font-black mb-6 text-cyber-orange">"Hire without the headache."</h3>
+                        <!-- HR professional in modern office setting -->
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="HR professional" class="w-full h-48 object-cover rounded-xl mb-6" data-mock-image="true">
+                        <p class="text-xl text-gray-300">Cut hiring time by 60% with AI-powered matching and video interviews.</p>
+                    </div>
+                    <div id="freelancer" class="audience-panel hidden">
+                        <h3 class="text-3xl font-black mb-6 text-neon-pink">"Meet your next team over coffee, not over months."</h3>
+                        <!-- Freelancer working in co-working space -->
+                        <img src="https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=300" alt="Freelancer in co-working space" class="w-full h-48 object-cover rounded-xl mb-6" data-mock-image="true">
+                        <p class="text-xl text-gray-300">Find project-based work that matches your expertise and schedule.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Target Audience Section -->
+
+    <!-- @COMPONENT: Benefits Section -->
+    <section class="py-20" id="benefits">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 reveal gradient-text">
+                Why ProxiD Works
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="benefit-card glassmorphism p-8 rounded-3xl text-center magnetic-effect reveal">
+                    <div class="text-6xl font-black text-digital-lime mb-4">60%</div>
+                    <h3 class="text-2xl font-bold mb-4">Faster Hiring</h3>
+                    <p class="text-gray-300">Match with talent in minutes, not weeks. Our AI learns your preferences with every swipe.</p>
+                </div>
+                <div class="benefit-card glassmorphism p-8 rounded-3xl text-center magnetic-effect reveal" style="animation-delay: 0.2s;">
+                    <div class="text-6xl font-black text-electric-purple mb-4">$20K</div>
+                    <h3 class="text-2xl font-bold mb-4">Annual Savings</h3>
+                    <p class="text-gray-300">Skip recruitment agencies. Direct connections mean lower costs and better matches.</p>
+                </div>
+                <div class="benefit-card glassmorphism p-8 rounded-3xl text-center magnetic-effect reveal" style="animation-delay: 0.4s;">
+                    <div class="text-6xl font-black text-cyber-orange mb-4">60%</div>
+                    <h3 class="text-2xl font-bold mb-4">Cheaper Than Agencies</h3>
+                    <p class="text-gray-300">Why pay middlemen when you can connect directly with the talent you need?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Benefits Section -->
+
+    <!-- @COMPONENT: Live Stats -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="glassmorphism rounded-3xl p-12 max-w-4xl mx-auto reveal">
+                <h3 class="text-3xl font-bold mb-8 gradient-text">Live Platform Activity</h3>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <div class="text-5xl font-black text-digital-lime mb-2" id="job-seekers">842</div>
+                        <p class="text-xl">Currently looking for jobs</p>
+                    </div>
+                    <div>
+                        <div class="text-5xl font-black text-neon-pink mb-2" id="employers">126</div>
+                        <p class="text-xl">Currently looking for talent</p>
+                    </div>
+                </div>
+                <p class="text-gray-400 mt-8">Updated in real-time • 1,200+ startups onboard</p>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Live Stats -->
+
+    <!-- @COMPONENT: Pricing Section -->
+    <section class="py-20" id="pricing">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-black text-center mb-16 reveal gradient-text">
+                Pricing That Works
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="pricing-card glassmorphism p-8 rounded-3xl text-center magnetic-effect reveal">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                    <div class="text-4xl font-black text-digital-lime mb-4">Free</div>
+                    <ul class="text-left space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-digital-lime mr-2"></i> 10 swipes per day</li>
+                        <li class="flex items-center"><i class="fas fa-check text-digital-lime mr-2"></i> Basic matching</li>
+                        <li class="flex items-center"><i class="fas fa-check text-digital-lime mr-2"></i> Profile creation</li>
+                    </ul>
+                    <button class="w-full bg-digital-lime text-black py-3 rounded-full font-bold">Start Free</button>
+                </div>
+
+                <!-- Basic Plan -->
+                <div class="pricing-card glassmorphism p-8 rounded-3xl text-center magnetic-effect reveal border-2 border-electric-purple" style="animation-delay: 0.2s;">
+                    <div class="text-4xl mb-4">💼</div>
+                    <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                    <div class="text-4xl font-black text-electric-purple mb-4">$15<span class="text-lg">/month</span></div>
+                    <ul class="text-left space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-electric-purple mr-2"></i> Unlimited swipes</li>
+                        <li class="flex items-center"><i class="fas fa-check text-electric-purple mr-2"></i> Video resumes</li>
+                        <li class="flex items-center"><i class="fas fa-check text-electric-purple mr-2"></i> Basic analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-electric-purple mr-2"></i> Email support</li>
+                    </ul>
+                    <button class="w-full holographic text-black py-3 rounded-full font-bold">Choose Basic</button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card glassmorphism p-8 rounded-3xl text-center magnetic-effect reveal" style="animation-delay: 0.4s;">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <div class="text-4xl font-black text-cyber-orange mb-4">$199<span class="text-lg">/month</span></div>
+                    <ul class="text-left space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-orange mr-2"></i> Everything in Basic</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-orange mr-2"></i> Talent exchange</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-orange mr-2"></i> Advanced analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-orange mr-2"></i> Priority support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-cyber-orange mr-2"></i> Custom integrations</li>
+                    </ul>
+                    <button class="w-full bg-cyber-orange text-black py-3 rounded-full font-bold">Go Pro</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Pricing Section -->
+
+    <!-- @COMPONENT: Final CTA Section -->
+    <section class="py-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-deep-space via-dark-bg to-deep-space"></div>
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-6xl md:text-8xl font-black mb-8 reveal">
+                <span class="gradient-text">Your team is waiting.</span><br>
+                <span class="text-white">Join ProxiD today.</span>
+            </h2>
+            
+            <p class="text-2xl mb-12 text-gray-300 max-w-3xl mx-auto reveal">
+                Don't let your startup die from lack of people. Join 1,200+ companies already winning with ProxiD.
+            </p>
+
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center reveal">
+                <button class="bg-digital-lime text-black px-16 py-6 rounded-full font-bold text-xl animate-pulse-glow magnetic-effect">
+                    <i class="fas fa-rocket mr-2"></i>Start Now
+                </button>
+                <button class="glassmorphism px-16 py-6 rounded-full font-bold text-xl magnetic-effect border border-electric-purple">
+                    <i class="fas fa-play mr-2"></i>See How It Works
+                </button>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="mt-16 reveal">
+                <p class="text-gray-400 mb-8">Trusted by innovative startups worldwide</p>
+                <div class="flex justify-center space-x-8 opacity-50">
+                    <div class="text-2xl font-bold">TechCorp</div>
+                    <div class="text-2xl font-bold">StartupX</div>
+                    <div class="text-2xl font-bold">InnovateLab</div>
+                    <div class="text-2xl font-bold">FutureStack</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More floating elements -->
+        <div class="absolute top-10 left-1/4 animate-float">
+            <div class="w-8 h-8 bg-neon-pink rounded-full opacity-40"></div>
+        </div>
+        <div class="absolute bottom-20 right-1/3 animate-float" style="animation-delay: 3s;">
+            <div class="w-12 h-12 holographic rounded-lg opacity-30"></div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Final CTA Section -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="py-12 glassmorphism border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-2xl font-black gradient-text mb-4 md:mb-0">ProxiD</div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-digital-lime transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="hover:text-digital-lime transition-colors"><i class="fab fa-linkedin text-xl"></i></a>
+                    <a href="#" class="hover:text-digital-lime transition-colors"><i class="fab fa-discord text-xl"></i></a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 ProxiD. Built for startups that refuse to fail.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+        // TODO: Implement WebGL particle system, 3D effects, and advanced animations
+        // TODO: Add Three.js for 3D transformations and particle effects
+        // TODO: Implement magnetic hover effects with proper physics
+        // TODO: Add scroll-triggered WebGL shader effects
+
+        (function() {
+            // Scroll reveal animation
+            function revealOnScroll() {
+                const reveals = document.querySelectorAll('.reveal');
+                
+                reveals.forEach(reveal => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+
+            // Audience selector functionality
+            function initAudienceSelector() {
+                const buttons = document.querySelectorAll('.audience-btn');
+                const panels = document.querySelectorAll('.audience-panel');
+                
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        // Remove active class from all buttons and panels
+                        buttons.forEach(btn => {
+                            btn.classList.remove('active', 'holographic');
+                            btn.classList.add('text-gray-400');
+                        });
+                        panels.forEach(panel => {
+                            panel.classList.add('hidden');
+                            panel.classList.remove('active');
+                        });
+                        
+                        // Add active class to clicked button and corresponding panel
+                        button.classList.add('active', 'holographic');
+                        button.classList.remove('text-gray-400');
+                        const target = document.getElementById(button.dataset.target);
+                        target.classList.remove('hidden');
+                        target.classList.add('active');
+                    });
+                });
+            }
+
+            // Live counter animation
+            function animateCounters() {
+                const jobSeekers = document.getElementById('job-seekers');
+                const employers = document.getElementById('employers');
+                
+                setInterval(() => {
+                    const currentJobSeekers = parseInt(jobSeekers.textContent);
+                    const currentEmployers = parseInt(employers.textContent);
+                    
+                    // Random fluctuation
+                    jobSeekers.textContent = currentJobSeekers + Math.floor(Math.random() * 10 - 5);
+                    employers.textContent = currentEmployers + Math.floor(Math.random() * 5 - 2);
+                }, 3000);
+            }
+
+            // Pricing card hover effects
+            function initPricingHover() {
+                const pricingCards = document.querySelectorAll('.pricing-card');
+                
+                pricingCards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-10px) scale(1.05)';
+                        card.style.boxShadow = '0 20px 40px rgba(191, 255, 0, 0.3)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = 'translateY(0) scale(1)';
+                        card.style.boxShadow = 'none';
+                    });
+                });
+            }
+
+            // Magnetic effect for buttons
+            function initMagneticEffect() {
+                const magneticElements = document.querySelectorAll('.magnetic-effect');
+                
+                magneticElements.forEach(el => {
+                    el.addEventListener('mousemove', (e) => {
+                        const rect = el.getBoundingClientRect();
+                        const x = e.clientX - rect.left - rect.width / 2;
+                        const y = e.clientY - rect.top - rect.height / 2;
+                        
+                        el.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
+                    });
+                    
+                    el.addEventListener('mouseleave', () => {
+                        el.style.transform = 'translate(0, 0) scale(1)';
+                    });
+                });
+            }
+
+            // Initialize all functionality
+            window.addEventListener('scroll', revealOnScroll);
+            window.addEventListener('load', () => {
+                initAudienceSelector();
+                animateCounters();
+                initPricingHover();
+                initMagneticEffect();
+                revealOnScroll(); // Initial check
+            });
+        })();
+    </script>
+</body>
+</html>

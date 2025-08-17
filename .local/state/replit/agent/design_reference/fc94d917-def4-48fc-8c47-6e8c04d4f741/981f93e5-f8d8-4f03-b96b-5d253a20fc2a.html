@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProxiD - Where Talent Meets Opportunity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/heroicons@2.0.18/24/outline/style.css" rel="stylesheet">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'dark-bg': '#0B0B0B',
+                    'neon-mint': '#00F5A0',
+                    'neon-pink': '#FF4B91',
+                    'dark-card': '#1A1A1A',
+                    'dark-border': '#333333'
+                },
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif']
+                },
+                animation: {
+                    'pulse-glow': 'pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    'float': 'float 6s ease-in-out infinite',
+                    'slide-up': 'slide-up 0.8s ease-out',
+                    'glow': 'glow 2s ease-in-out infinite alternate'
+                },
+                keyframes: {
+                    'pulse-glow': {
+                        '0%, 100%': {
+                            boxShadow: '0 0 20px rgba(0, 245, 160, 0.3)',
+                            transform: 'scale(1)'
+                        },
+                        '50%': {
+                            boxShadow: '0 0 40px rgba(0, 245, 160, 0.6)',
+                            transform: 'scale(1.02)'
+                        }
+                    },
+                    'float': {
+                        '0%, 100%': { transform: 'translateY(0px)' },
+                        '50%': { transform: 'translateY(-20px)' }
+                    },
+                    'slide-up': {
+                        '0%': {
+                            opacity: '0',
+                            transform: 'translateY(30px)'
+                        },
+                        '100%': {
+                            opacity: '1',
+                            transform: 'translateY(0)'
+                        }
+                    },
+                    'glow': {
+                        '0%': { textShadow: '0 0 20px rgba(0, 245, 160, 0.5)' },
+                        '100%': { textShadow: '0 0 30px rgba(0, 245, 160, 0.8), 0 0 40px rgba(0, 245, 160, 0.6)' }
+                    }
+                }
+            }
+        }
+    };
+    </script>
+</head>
+
+<body class="bg-dark-bg text-white font-inter overflow-x-hidden">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-black text-neon-mint">ProxiD</div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#problem" class="text-gray-300 hover:text-neon-mint transition-colors duration-300">Problem</a>
+                        <a href="#solution" class="text-gray-300 hover:text-neon-mint transition-colors duration-300">Solution</a>
+                        <a href="#pricing" class="text-gray-300 hover:text-neon-mint transition-colors duration-300">Pricing</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-300 hover:text-white transition-colors duration-300">Sign In</button>
+                    <button class="bg-neon-mint text-dark-bg px-6 py-2 rounded-lg font-bold hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg hover:shadow-neon-mint/30">
+                        Try Free
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: HeroSection -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Particle Background Animation -->
+        <div class="absolute inset-0 z-0">
+            <canvas id="particleCanvas" class="w-full h-full"></canvas>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-slide-up">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight">
+                    Your startup won't die from
+                    <span class="text-neon-mint animate-glow">lack of people.</span>
+                    <br>Not on our watch.
+                </h1>
+
+                <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto font-medium">
+                    The Tinder for talent meets the efficiency of modern hiring. Swipe right on your next team member.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                    <button class="bg-neon-mint text-dark-bg px-8 py-4 rounded-xl font-bold text-lg animate-pulse-glow hover:scale-105 transition-transform duration-300">
+                        Try for Free
+                    </button>
+                    <button class="border-2 border-neon-pink text-neon-pink px-8 py-4 rounded-xl font-bold text-lg hover:bg-neon-pink hover:text-dark-bg transition-all duration-300">
+                        Watch 30s Demo
+                    </button>
+                </div>
+
+                <!-- Live Swipe Demo -->
+                <div class="max-w-sm mx-auto relative animate-float">
+                    <div class="bg-dark-card rounded-2xl p-6 border border-dark-border shadow-2xl relative overflow-hidden" id="swipeCard">
+                        <div class="text-center">
+                            <!-- A professional headshot of a diverse tech professional in modern office setting -->
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=300&h=300" alt="Tech professional" class="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-2 border-neon-mint">
+                            <h3 class="text-xl font-bold mb-2">Alex Chen</h3>
+                            <p class="text-neon-mint mb-2">Full Stack Developer</p>
+                            <p class="text-sm text-gray-400 mb-4">React, Node.js, Python • 3 years exp</p>
+                            <div class="flex justify-center space-x-4">
+                                <button class="bg-red-500 rounded-full p-3 hover:bg-red-600 transition-colors">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                                <button class="bg-neon-mint text-dark-bg rounded-full p-3 hover:bg-opacity-90 transition-colors">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Counters -->
+                <div class="mt-12 flex flex-col sm:flex-row gap-8 justify-center text-center">
+                    <div class="bg-dark-card/50 backdrop-blur-sm rounded-lg p-4 border border-dark-border">
+                        <div class="text-2xl font-bold text-neon-mint" data-counter="842">842</div>
+                        <div class="text-sm text-gray-400">Looking for jobs</div>
+                    </div>
+                    <div class="bg-dark-card/50 backdrop-blur-sm rounded-lg p-4 border border-dark-border">
+                        <div class="text-2xl font-bold text-neon-pink" data-counter="126">126</div>
+                        <div class="text-sm text-gray-400">Looking for talent</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- @COMPONENT: ProblemSection -->
+    <section id="problem" class="py-20 bg-gradient-to-b from-dark-bg to-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="parallax-container">
+                <h2 class="text-4xl md:text-6xl font-black mb-16 glitch-text" data-text="The brutal truth">
+                    The brutal truth
+                </h2>
+
+                <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                    <div class="problem-stat opacity-0 transform translate-y-8" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-6xl font-black text-neon-pink mb-4">40%</div>
+                        <h3 class="text-xl font-bold mb-3">of employee time is wasted</h3>
+                        <p class="text-gray-400">on tasks they're not suited for or projects that go nowhere.</p>
+                    </div>
+
+                    <div class="problem-stat opacity-0 transform translate-y-8" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-6xl font-black text-neon-mint mb-4">67%</div>
+                        <h3 class="text-xl font-bold mb-3">of companies overpay for hiring</h3>
+                        <p class="text-gray-400">using outdated recruitment agencies and endless interview rounds.</p>
+                    </div>
+
+                    <div class="problem-stat opacity-0 transform translate-y-8" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-6xl font-black text-yellow-400 mb-4">3+</div>
+                        <h3 class="text-xl font-bold mb-3">months for interns to land jobs</h3>
+                        <p class="text-gray-400">while companies desperately need fresh talent right now.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ProblemSection -->
+
+    <!-- @COMPONENT: SolutionSection -->
+    <section id="solution" class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Work finds you.
+                    <span class="text-neon-mint">Not the other way around.</span>
+                </h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Stop playing hiring roulette. Our AI-powered platform matches talent with opportunities instantly.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Video Demo Placeholder -->
+                <div class="relative">
+                    <div class="aspect-video bg-dark-card rounded-2xl border border-dark-border overflow-hidden relative">
+                        <!-- A modern startup team collaborating around a computer screen showing the platform interface -->
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450" alt="Startup team collaborating" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+                            <button class="bg-neon-mint text-dark-bg rounded-full p-4 hover:scale-110 transition-transform duration-300">
+                                <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4 p-4 rounded-xl hover:bg-dark-card/50 transition-colors duration-300">
+                        <div class="bg-neon-mint text-dark-bg rounded-lg p-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">🎯 AI-matching — 89% accuracy</h3>
+                            <p class="text-gray-300">Our algorithm learns from successful matches to predict perfect fits.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 rounded-xl hover:bg-dark-card/50 transition-colors duration-300">
+                        <div class="bg-neon-pink text-dark-bg rounded-lg p-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">🎥 Video resumes — save time</h3>
+                            <p class="text-gray-300">Skip the phone screen. See personality and skills in 60 seconds.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 rounded-xl hover:bg-dark-card/50 transition-colors duration-300">
+                        <div class="bg-purple-500 text-white rounded-lg p-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">🔄 Talent exchange between companies</h3>
+                            <p class="text-gray-300">Share resources when projects end. Keep talent in your network.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-4 p-4 rounded-xl hover:bg-dark-card/50 transition-colors duration-300">
+                        <div class="bg-blue-500 text-white rounded-lg p-3">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">📊 Real-time analytics & reporting</h3>
+                            <p class="text-gray-300">Track hiring velocity, cost per hire, and team performance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: SolutionSection -->
+
+    <!-- @COMPONENT: WhoItsForSection -->
+    <section class="py-20 bg-gradient-to-b from-dark-bg to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">Built for builders</h2>
+                <p class="text-xl text-gray-300">Choose your adventure</p>
+            </div>
+
+            <!-- Interactive Slider -->
+            <div class="max-w-4xl mx-auto">
+                <div class="flex justify-center mb-12">
+                    <div class="bg-dark-card rounded-full p-2 border border-dark-border">
+                        <div class="flex space-x-2">
+                            <button class="audience-tab active px-6 py-3 rounded-full font-bold transition-all duration-300" data-tab="founder">
+                                Founder
+                            </button>
+                            <button class="audience-tab px-6 py-3 rounded-full font-bold transition-all duration-300" data-tab="intern">
+                                Intern
+                            </button>
+                            <button class="audience-tab px-6 py-3 rounded-full font-bold transition-all duration-300" data-tab="hr">
+                                HR
+                            </button>
+                            <button class="audience-tab px-6 py-3 rounded-full font-bold transition-all duration-300" data-tab="freelancer">
+                                Freelancer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Panels -->
+                <div class="audience-content">
+                    <div id="founder" class="audience-panel active text-center">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <!-- A confident startup founder presenting to a diverse team in a modern office -->
+                                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Startup founder presenting" class="rounded-2xl shadow-2xl w-full">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-3xl font-black mb-4 text-neon-mint">For Founders</h3>
+                                <p class="text-2xl font-bold mb-6">"Our release is on fire. Our team is not. Let's fix that."</p>
+                                <ul class="space-y-3 text-lg text-gray-300">
+                                    <li class="flex items-center"><span class="text-neon-mint mr-3">✓</span> Find co-founders and early employees</li>
+                                    <li class="flex items-center"><span class="text-neon-mint mr-3">✓</span> Scale your team without breaking the bank</li>
+                                    <li class="flex items-center"><span class="text-neon-mint mr-3">✓</span> Access pre-vetted talent pool</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="intern" class="audience-panel hidden text-center">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <!-- A young professional working on a laptop in a modern co-working space -->
+                                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Young professional working" class="rounded-2xl shadow-2xl w-full">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-3xl font-black mb-4 text-neon-pink">For Interns</h3>
+                                <p class="text-2xl font-bold mb-6">"Get hired faster than you can say 'portfolio'."</p>
+                                <ul class="space-y-3 text-lg text-gray-300">
+                                    <li class="flex items-center"><span class="text-neon-pink mr-3">✓</span> Skip the endless applications</li>
+                                    <li class="flex items-center"><span class="text-neon-pink mr-3">✓</span> Show skills, not just grades</li>
+                                    <li class="flex items-center"><span class="text-neon-pink mr-3">✓</span> Connect with startup culture</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="hr" class="audience-panel hidden text-center">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <!-- A diverse team of HR professionals reviewing candidates on multiple screens -->
+                                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="HR professionals reviewing candidates" class="rounded-2xl shadow-2xl w-full">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-3xl font-black mb-4 text-purple-400">For HR Teams</h3>
+                                <p class="text-2xl font-bold mb-6">"Hire without the headache."</p>
+                                <ul class="space-y-3 text-lg text-gray-300">
+                                    <li class="flex items-center"><span class="text-purple-400 mr-3">✓</span> Reduce time-to-hire by 60%</li>
+                                    <li class="flex items-center"><span class="text-purple-400 mr-3">✓</span> Better quality matches</li>
+                                    <li class="flex items-center"><span class="text-purple-400 mr-3">✓</span> Data-driven hiring decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="freelancer" class="audience-panel hidden text-center">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <!-- A freelancer working remotely from a beautiful location with laptop and coffee -->
+                                <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" alt="Freelancer working remotely" class="rounded-2xl shadow-2xl w-full">
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-3xl font-black mb-4 text-yellow-400">For Freelancers</h3>
+                                <p class="text-2xl font-bold mb-6">"Meet your next team over coffee, not over months."</p>
+                                <ul class="space-y-3 text-lg text-gray-300">
+                                    <li class="flex items-center"><span class="text-yellow-400 mr-3">✓</span> Find consistent project work</li>
+                                    <li class="flex items-center"><span class="text-yellow-400 mr-3">✓</span> Build long-term relationships</li>
+                                    <li class="flex items-center"><span class="text-yellow-400 mr-3">✓</span> Fair pricing, no middleman</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: WhoItsForSection -->
+
+    <!-- @COMPONENT: BenefitsSection -->
+    <section class="py-20 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">Why everyone's switching</h2>
+                <p class="text-xl text-gray-300">The numbers don't lie</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="benefit-card bg-dark-card rounded-2xl p-8 border border-dark-border hover:border-neon-mint transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-neon-mint/20">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-neon-mint text-dark-bg rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Speed</h3>
+                        <div class="text-4xl font-black text-neon-mint mb-4">60%</div>
+                        <p class="text-gray-300">faster hiring than traditional methods. Days, not months.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card bg-dark-card rounded-2xl p-8 border border-dark-border hover:border-neon-pink transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-neon-pink/20">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-neon-pink text-dark-bg rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Savings</h3>
+                        <div class="text-4xl font-black text-neon-pink mb-4">$20K</div>
+                        <p class="text-gray-300">saved per year on recruitment costs and bad hires.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card bg-dark-card rounded-2xl p-8 border border-dark-border hover:border-purple-400 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-400/20">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-400 text-dark-bg rounded-full flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Cost</h3>
+                        <div class="text-4xl font-black text-purple-400 mb-4">60%</div>
+                        <p class="text-gray-300">cheaper than traditional recruitment agencies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: BenefitsSection -->
+
+    <!-- @COMPONENT: PricingSection -->
+    <section id="pricing" class="py-20 bg-gradient-to-b from-dark-bg to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-6xl font-black mb-6">Simple pricing</h2>
+                <p class="text-xl text-gray-300">No hidden fees. No surprises. Just results.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Starter Plan -->
+                <div class="pricing-card bg-dark-card rounded-2xl p-8 border border-dark-border hover:border-neon-mint transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl relative">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Starter</h3>
+                        <div class="text-4xl font-black text-neon-mint mb-2">Free</div>
+                        <p class="text-gray-400">Perfect for testing the waters</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-neon-mint mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            5 swipes per day
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-neon-mint mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Basic matching
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-neon-mint mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Email support
+                        </li>
+                    </ul>
+                    <button class="w-full bg-transparent border-2 border-neon-mint text-neon-mint py-3 rounded-lg font-bold hover:bg-neon-mint hover:text-dark-bg transition-all duration-300">
+                        Get Started
+                    </button>
+                    <div class="absolute -top-2 -right-2 w-16 h-16 bg-neon-mint rounded-full flex items-center justify-center transform rotate-12">
+                        <span class="text-xs font-bold text-dark-bg">🚀</span>
+                    </div>
+                </div>
+
+                <!-- Basic Plan -->
+                <div class="pricing-card bg-dark-card rounded-2xl p-8 border border-dark-border hover:border-neon-pink transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl relative">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold mb-4">Basic</h3>
+                        <div class="text-4xl font-black text-neon-pink mb-2">$15<span class="text-lg font-normal">/month</span></div>
+                        <p class="text-gray-400">For growing teams</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-neon-pink mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Unlimited swipes
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-neon-pink mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            AI-powered matching
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-neon-pink mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Video resume access
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-neon-pink mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Priority support
+                        </li>
+                    </ul>
+                    <button class="w-full bg-neon-pink text-dark-bg py-3 rounded-lg font-bold hover:bg-opacity-90 transition-all duration-300">
+                        Choose Basic
+                    </button>
+                    <div class="absolute -top-2 -right-2 w-16 h-16 bg-neon-pink rounded-full flex items-center justify-center transform rotate-12">
+                        <span class="text-xs font-bold text-dark-bg">💪</span>
+                    </div>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card bg-dark-card rounded-2xl p-8 border-2 border-purple-400 hover:border-purple-300 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-400/30 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-purple-400 text-dark-bg px-6 py-2 rounded-full text-sm font-bold">
+                            MOST POPULAR
+                        </div>
+                    </div>
+                    <div class="text-center mb-8 mt-4">
+                        <h3 class="text-2xl font-bold mb-4">Pro</h3>
+                        <div class="text-4xl font-black text-purple-400 mb-2">$199<span class="text-lg font-normal">/month</span></div>
+                        <p class="text-gray-400">For scaling companies</p>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Everything in Basic
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Talent exchange network
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Advanced analytics
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Dedicated success manager
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-purple-400 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            White-glove onboarding
+                        </li>
+                    </ul>
+                    <button class="w-full bg-purple-400 text-dark-bg py-3 rounded-lg font-bold hover:bg-purple-300 transition-all duration-300">
+                        Go Pro
+                    </button>
+                    <div class="absolute -top-2 -right-2 w-16 h-16 bg-purple-400 rounded-full flex items-center justify-center transform rotate-12">
+                        <span class="text-xs font-bold text-dark-bg">👑</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-400 mb-4">14-day free trial on all paid plans. No credit card required.</p>
+                <div class="flex justify-center items-center space-x-8">
+                    <span class="flex items-center text-sm text-gray-300">
+                        <svg class="w-4 h-4 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Cancel anytime
+                    </span>
+                    <span class="flex items-center text-sm text-gray-300">
+                        <svg class="w-4 h-4 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        No setup fees
+                    </span>
+                    <span class="flex items-center text-sm text-gray-300">
+                        <svg class="w-4 h-4 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Money-back guarantee
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: PricingSection -->
+
+    <!-- @COMPONENT: FinalCTASection -->
+    <section class="py-20 bg-gradient-to-r from-neon-mint/10 via-neon-pink/10 to-purple-500/10 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-neon-mint/5 via-transparent to-neon-pink/5"></div>
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-6xl font-black mb-6">
+                Your team is waiting.
+                <span class="text-neon-mint">Join ProxiD today.</span>
+            </h2>
+
+            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                Stop losing great people to slow hiring processes. Start building your dream team in minutes, not months.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <button class="bg-neon-mint text-dark-bg px-10 py-4 rounded-xl font-bold text-xl animate-pulse-glow hover:scale-105 transition-transform duration-300">
+                    Start Now
+                </button>
+                <button class="border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-xl hover:bg-white hover:text-dark-bg transition-all duration-300">
+                    See How It Works
+                </button>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-sm text-gray-400 mb-4">Trusted by 1,200+ startups worldwide</p>
+                <div class="flex justify-center items-center space-x-8 opacity-60">
+                    <div class="text-gray-400">Y Combinator</div>
+                    <div class="text-gray-400">Techstars</div>
+                    <div class="text-gray-400">500 Startups</div>
+                    <div class="text-gray-400">AngelPad</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: FinalCTASection -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-dark-bg border-t border-dark-border py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="text-2xl font-black text-neon-mint mb-4">ProxiD</div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        The fastest way to build your dream team. Swipe right on talent, left on outdated hiring.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-neon-mint transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-neon-mint transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-neon-mint transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Product</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">API</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">Integrations</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Support</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">Privacy</a></li>
+                        <li><a href="#" class="hover:text-neon-mint transition-colors">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-dark-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2025 ProxiD. All rights reserved.</p>
+                <p class="text-gray-400 text-sm mt-4 md:mt-0">Built with ❤️ for the startup community</p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <script>
+    (() => {
+        // Particle animation for hero background
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+                this.size = Math.random() * 3 + 1;
+                this.color = Math.random() > 0.5 ? '#00F5A0' : '#FF4B91';
+                this.opacity = Math.random() * 0.8 + 0.2;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+
+            // Draw connections
+            ctx.globalAlpha = 0.1;
+            ctx.strokeStyle = '#00F5A0';
+            ctx.lineWidth = 1;
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            animationId = requestAnimationFrame(animate);
+        }
+
+        // Initialize particles
+        resizeCanvas();
+        initParticles();
+        animate();
+
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        // Card swipe animation
+        const swipeCard = document.getElementById('swipeCard');
+        let isAnimating = false;
+
+        function swipeAnimation() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            swipeCard.style.transform = 'translateX(100%) rotate(20deg)';
+            swipeCard.style.opacity = '0';
+
+            setTimeout(() => {
+                swipeCard.style.transform = 'translateX(-100%) rotate(-20deg)';
+
+                setTimeout(() => {
+                    swipeCard.style.transition = 'none';
+                    swipeCard.style.transform = 'translateX(0) rotate(0deg)';
+                    swipeCard.style.opacity = '1';
+
+                    setTimeout(() => {
+                        swipeCard.style.transition = 'transform 0.6s ease, opacity 0.6s ease';
+                        isAnimating = false;
+                    }, 50);
+                }, 100);
+            }, 600);
+        }
+
+        setInterval(swipeAnimation, 4000);
+
+        // Real-time counter animation
+        function animateCounter(element, target) {
+            const start = parseInt(element.textContent);
+            const increment = Math.ceil((target - start) / 20);
+            let current = start;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = current;
+            }, 100);
+        }
+
+        // Animate counters on page load
+        setTimeout(() => {
+            const jobSeekers = document.querySelector('[data-counter="842"]');
+            const talentSeekers = document.querySelector('[data-counter="126"]');
+
+            animateCounter(jobSeekers, Math.floor(Math.random() * 100) + 842);
+            animateCounter(talentSeekers, Math.floor(Math.random() * 50) + 126);
+        }, 2000);
+
+        // Audience tab functionality
+        const audienceTabs = document.querySelectorAll('.audience-tab');
+        const audiencePanels = document.querySelectorAll('.audience-panel');
+
+        audienceTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.dataset.tab;
+
+                // Update active tab
+                audienceTabs.forEach(t => t.classList.remove('active', 'bg-neon-mint', 'text-dark-bg'));
+                tab.classList.add('active', 'bg-neon-mint', 'text-dark-bg');
+
+                // Update active panel
+                audiencePanels.forEach(panel => {
+                    panel.classList.add('hidden');
+                    panel.classList.remove('active');
+                });
+
+                const activePanel = document.getElementById(target);
+                if (activePanel) {
+                    activePanel.classList.remove('hidden');
+                    activePanel.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.problem-stat, .benefit-card, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.benefit-card, .pricing-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-10px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+    })();
+    </script>
+
+    <style>
+    .glitch-text {
+        position: relative;
+    }
+
+    .glitch-text:before,
+    .glitch-text:after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+    }
+
+    .glitch-text:before {
+        animation: glitch-anim-1 0.3s infinite linear alternate-reverse;
+        color: #00F5A0;
+        z-index: -1;
+    }
+
+    .glitch-text:after {
+        animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+        color: #FF4B91;
+        z-index: -2;
+    }
+
+    @keyframes glitch-anim-1 {
+        0% { clip: rect(64px, 9999px, 66px, 0); }
+        5% { clip: rect(30px, 9999px, 36px, 0); }
+        10% { clip: rect(76px, 9999px, 78px, 0); }
+        15% { clip: rect(95px, 9999px, 97px, 0); }
+        20% { clip: rect(40px, 9999px, 44px, 0); }
+        25% { clip: rect(10px, 9999px, 12px, 0); }
+        30% { clip: rect(85px, 9999px, 90px, 0); }
+        35% { clip: rect(55px, 9999px, 58px, 0); }
+        40% { clip: rect(20px, 9999px, 22px, 0); }
+        45% { clip: rect(68px, 9999px, 72px, 0); }
+        50% { clip: rect(15px, 9999px, 20px, 0); }
+        55% { clip: rect(80px, 9999px, 84px, 0); }
+        60% { clip: rect(35px, 9999px, 40px, 0); }
+        65% { clip: rect(50px, 9999px, 55px, 0); }
+        70% { clip: rect(25px, 9999px, 30px, 0); }
+        75% { clip: rect(70px, 9999px, 75px, 0); }
+        80% { clip: rect(45px, 9999px, 50px, 0); }
+        85% { clip: rect(60px, 9999px, 65px, 0); }
+        90% { clip: rect(5px, 9999px, 10px, 0); }
+        95% { clip: rect(90px, 9999px, 95px, 0); }
+        100% { clip: rect(32px, 9999px, 35px, 0); }
+    }
+
+    @keyframes glitch-anim-2 {
+        0% { clip: rect(65px, 9999px, 70px, 0); }
+        5% { clip: rect(29px, 9999px, 33px, 0); }
+        10% { clip: rect(75px, 9999px, 80px, 0); }
+        15% { clip: rect(94px, 9999px, 98px, 0); }
+        20% { clip: rect(39px, 9999px, 43px, 0); }
+        25% { clip: rect(9px, 9999px, 13px, 0); }
+        30% { clip: rect(84px, 9999px, 89px, 0); }
+        35% { clip: rect(54px, 9999px, 59px, 0); }
+        40% { clip: rect(19px, 9999px, 23px, 0); }
+        45% { clip: rect(67px, 9999px, 73px, 0); }
+        50% { clip: rect(14px, 9999px, 21px, 0); }
+        55% { clip: rect(79px, 9999px, 85px, 0); }
+        60% { clip: rect(34px, 9999px, 41px, 0); }
+        65% { clip: rect(49px, 9999px, 56px, 0); }
+        70% { clip: rect(24px, 9999px, 31px, 0); }
+        75% { clip: rect(69px, 9999px, 76px, 0); }
+        80% { clip: rect(44px, 9999px, 51px, 0); }
+        85% { clip: rect(59px, 9999px, 66px, 0); }
+        90% { clip: rect(4px, 9999px, 11px, 0); }
+        95% { clip: rect(89px, 9999px, 96px, 0); }
+        100% { clip: rect(31px, 9999px, 36px, 0); }
+    }
+    </style>
+</body>
+</html>

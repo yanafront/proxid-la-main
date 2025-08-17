@@ -1,0 +1,813 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProxiD - Where Talent Meets Opportunity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'neural-blue': '#0066FF',
+                    'quantum-purple': '#8B5CF6',
+                    'quantum-gray': '#F5F7FA',
+                    'glass-white': 'rgba(255, 255, 255, 0.25)',
+                    'glass-dark': 'rgba(0, 0, 0, 0.1)'
+                },
+                fontFamily: {
+                    'inter': ['Inter', 'sans-serif']
+                },
+                animation: {
+                    'float': 'float 6s ease-in-out infinite',
+                    'pulse-soft': 'pulse-soft 3s ease-in-out infinite',
+                    'swipe-auto': 'swipe-auto 4s ease-in-out infinite',
+                    'particle-burst': 'particle-burst 0.8s ease-out',
+                    'holographic': 'holographic 2s linear infinite'
+                },
+                backdropBlur: {
+                    'xs': '2px',
+                }
+            }
+        }
+    };
+    </script>
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1) translateZ(0); box-shadow: 0 0 0 rgba(102, 102, 255, 0); }
+            50% { transform: scale(1.05) translateZ(0); box-shadow: 0 0 40px rgba(102, 102, 255, 0.3); }
+        }
+        @keyframes swipe-auto {
+            0% { transform: translateX(0) rotateY(0deg) rotateZ(0deg); opacity: 1; }
+            25% { transform: translateX(100px) rotateY(-15deg) rotateZ(5deg); opacity: 0.8; }
+            50% { transform: translateX(300px) rotateY(-25deg) rotateZ(10deg); opacity: 0; }
+            51% { transform: translateX(-300px) rotateY(25deg) rotateZ(-10deg); opacity: 0; }
+            75% { transform: translateX(-100px) rotateY(15deg) rotateZ(-5deg); opacity: 0.8; }
+            100% { transform: translateX(0) rotateY(0deg) rotateZ(0deg); opacity: 1; }
+        }
+        @keyframes particle-burst {
+            0% { transform: scale(0.8) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+            100% { transform: scale(1.5) rotate(360deg); opacity: 0; }
+        }
+        @keyframes holographic {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .neomorphic {
+            background: linear-gradient(145deg, #ffffff, #f0f0f3);
+            box-shadow: 20px 20px 60px #d1d1d4, -20px -20px 60px #ffffff;
+        }
+        .neomorphic-inset {
+            background: linear-gradient(145deg, #f0f0f3, #ffffff);
+            box-shadow: inset 20px 20px 60px #d1d1d4, inset -20px -20px 60px #ffffff;
+        }
+        .glassmorphic {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .holographic-button {
+            background: linear-gradient(45deg, #0066FF, #8B5CF6, #0066FF, #8B5CF6);
+            background-size: 400% 400%;
+            animation: holographic 2s ease infinite;
+        }
+        .card-stack {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .swipe-card {
+            position: absolute;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .swipe-card:nth-child(1) { z-index: 50; }
+        .swipe-card:nth-child(2) { z-index: 40; transform: translateY(10px) scale(0.95); opacity: 0.9; }
+        .swipe-card:nth-child(3) { z-index: 30; transform: translateY(20px) scale(0.9); opacity: 0.8; }
+        .swipe-card:nth-child(4) { z-index: 20; transform: translateY(30px) scale(0.85); opacity: 0.7; }
+        .swipe-card:nth-child(5) { z-index: 10; transform: translateY(40px) scale(0.8); opacity: 0.6; }
+        .parallax-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .parallax-bg { transform: translateZ(-7px) scale(8); }
+        .parallax-mid { transform: translateZ(-3px) scale(4); }
+        .parallax-front { transform: translateZ(-1px) scale(2); }
+        .sticky-nav {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .sticky-nav.scrolled {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(102, 102, 255, 0.1);
+        }
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .section-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .floating-object {
+            position: absolute;
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-object:nth-child(2n) {
+            animation-delay: -2s;
+        }
+        .floating-object:nth-child(3n) {
+            animation-delay: -4s;
+        }
+    </style>
+</head>
+<body class="font-inter overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="sticky-nav fixed top-0 left-0 right-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-xl flex items-center justify-center">
+                    <i class="fas fa-infinity text-white text-lg"></i>
+                </div>
+                <span class="text-2xl font-bold text-gray-900">ProxiD</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="text-gray-700 hover:text-neural-blue transition-colors">Features</a>
+                <a href="#pricing" class="text-gray-700 hover:text-neural-blue transition-colors">Pricing</a>
+                <a href="#about" class="text-gray-700 hover:text-neural-blue transition-colors">About</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 text-neural-blue hover:text-quantum-purple transition-colors">Login</button>
+                <button class="px-6 py-2 bg-gradient-to-r from-neural-blue to-quantum-purple text-white rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                    Sign Up
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-quantum-gray to-white">
+        <!-- Floating Background Objects -->
+        <div class="floating-object top-20 left-10 w-32 h-32 bg-gradient-to-br from-neural-blue/10 to-transparent rounded-full blur-xl"></div>
+        <div class="floating-object top-40 right-20 w-48 h-48 bg-gradient-to-br from-quantum-purple/10 to-transparent rounded-full blur-xl"></div>
+        <div class="floating-object bottom-32 left-1/4 w-24 h-24 bg-gradient-to-br from-neural-blue/20 to-quantum-purple/20 rounded-full blur-lg"></div>
+
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="space-y-8 section-reveal">
+                <div class="space-y-4">
+                    <h1 class="text-5xl lg:text-7xl font-black leading-tight">
+                        <span class="bg-gradient-to-r from-neural-blue to-quantum-purple bg-clip-text text-transparent">
+                            Your startup
+                        </span>
+                        <br>
+                        <span class="text-gray-900">won't die from</span>
+                        <br>
+                        <span class="text-gray-900">lack of people.</span>
+                        <br>
+                        <span class="text-sm font-medium text-quantum-purple">Not on our watch.</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-lg">
+                        The first AI-powered talent exchange where work finds you. Swipe, match, and build your dream team in minutes, not months.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="holographic-button px-8 py-4 text-white font-bold rounded-2xl text-lg transform hover:scale-105 transition-all duration-300 animate-pulse-soft">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Try for Free
+                    </button>
+                    <button class="px-8 py-4 glassmorphic text-gray-800 font-semibold rounded-2xl hover:shadow-lg transition-all duration-300">
+                        <i class="fas fa-play mr-2"></i>
+                        Watch 30s Demo
+                    </button>
+                </div>
+
+                <!-- Live Stats -->
+                <div class="flex space-x-8 pt-8">
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-neural-blue" data-count="842">0</div>
+                        <div class="text-sm text-gray-600">Looking for jobs</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-quantum-purple" data-count="126">0</div>
+                        <div class="text-sm text-gray-600">Looking for talent</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content - Swipe Demo -->
+            <div class="relative h-96 lg:h-[500px] flex items-center justify-center">
+                <div class="card-stack relative w-80 h-96">
+                    <!-- Card 1 -->
+                    <div class="swipe-card w-full h-full neomorphic rounded-3xl p-6 flex flex-col animate-swipe-auto">
+                        <!-- Senior Frontend Developer profile -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="Senior Frontend Developer" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="font-bold text-lg">Alex Chen</h3>
+                                <p class="text-neural-blue">Senior Frontend Developer</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3 flex-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-neural-blue/10 text-neural-blue rounded-full text-sm">React</span>
+                                <span class="px-3 py-1 bg-quantum-purple/10 text-quantum-purple rounded-full text-sm">TypeScript</span>
+                                <span class="px-3 py-1 bg-neural-blue/10 text-neural-blue rounded-full text-sm">Next.js</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">5+ years building scalable web apps. Currently available for exciting startup projects.</p>
+                            <div class="text-2xl font-bold text-green-600">$75/hr</div>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="w-12 h-12 bg-green-100 text-green-500 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="swipe-card w-full h-full neomorphic rounded-3xl p-6 flex flex-col">
+                        <!-- UI/UX Designer profile -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b442?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="UI/UX Designer" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="font-bold text-lg">Maya Patel</h3>
+                                <p class="text-neural-blue">UI/UX Designer</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3 flex-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-neural-blue/10 text-neural-blue rounded-full text-sm">Figma</span>
+                                <span class="px-3 py-1 bg-quantum-purple/10 text-quantum-purple rounded-full text-sm">Design Systems</span>
+                                <span class="px-3 py-1 bg-neural-blue/10 text-neural-blue rounded-full text-sm">Prototyping</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Crafting beautiful, user-centered designs. Portfolio with 50+ successful projects.</p>
+                            <div class="text-2xl font-bold text-green-600">$60/hr</div>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="w-12 h-12 bg-green-100 text-green-500 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="swipe-card w-full h-full neomorphic rounded-3xl p-6 flex flex-col">
+                        <!-- Project Manager profile -->
+                        <div class="flex items-center space-x-4 mb-4">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150" alt="Project Manager" class="w-16 h-16 rounded-full object-cover">
+                            <div>
+                                <h3 class="font-bold text-lg">David Kim</h3>
+                                <p class="text-neural-blue">Project Manager</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3 flex-1">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-neural-blue/10 text-neural-blue rounded-full text-sm">Agile</span>
+                                <span class="px-3 py-1 bg-quantum-purple/10 text-quantum-purple rounded-full text-sm">Scrum</span>
+                                <span class="px-3 py-1 bg-neural-blue/10 text-neural-blue rounded-full text-sm">Leadership</span>
+                            </div>
+                            <p class="text-gray-600 text-sm">Led 20+ teams to successful product launches. Specialized in tech startups and rapid scaling.</p>
+                            <div class="text-2xl font-bold text-green-600">$85/hr</div>
+                        </div>
+                        <div class="flex justify-between pt-4">
+                            <button class="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <button class="w-12 h-12 bg-green-100 text-green-500 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: The Problem -->
+    <section id="problem" class="py-20 bg-gradient-to-br from-quantum-gray to-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center section-reveal">
+                <h2 class="text-5xl font-black mb-12">
+                    <span class="bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">The hiring crisis</span>
+                    <br>
+                    <span class="text-gray-900">is killing startups</span>
+                </h2>
+
+                <div class="grid md:grid-cols-3 gap-8 mt-16">
+                    <div class="neomorphic rounded-3xl p-8 text-center">
+                        <div class="text-6xl font-black text-red-500 mb-4">40%</div>
+                        <h3 class="text-xl font-bold mb-2">Time Wasted</h3>
+                        <p class="text-gray-600">Employee time lost on inefficient hiring processes</p>
+                    </div>
+                    <div class="neomorphic rounded-3xl p-8 text-center">
+                        <div class="text-6xl font-black text-orange-500 mb-4">67%</div>
+                        <h3 class="text-xl font-bold mb-2">Overpaying</h3>
+                        <p class="text-gray-600">Companies spending too much on recruitment agencies</p>
+                    </div>
+                    <div class="neomorphic rounded-3xl p-8 text-center">
+                        <div class="text-6xl font-black text-red-600 mb-4">3+</div>
+                        <h3 class="text-xl font-bold mb-2">Months</h3>
+                        <p class="text-gray-600">Average time for interns to land their first job</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: The Solution -->
+    <section id="solution" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center section-reveal mb-16">
+                <h2 class="text-5xl font-black mb-6">
+                    <span class="text-gray-900">Work finds you.</span>
+                    <br>
+                    <span class="bg-gradient-to-r from-neural-blue to-quantum-purple bg-clip-text text-transparent">Not the other way around.</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our AI-powered platform revolutionizes how talent and opportunities connect, making hiring as simple as swiping right.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Video Loop Placeholder -->
+                <div class="relative">
+                    <!-- Modern office workspace with tech professionals -->
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="Modern office workspace with diverse tech team collaborating" class="rounded-3xl shadow-2xl w-full">
+                    <div class="absolute inset-0 bg-gradient-to-t from-neural-blue/20 to-transparent rounded-3xl"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <button class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fas fa-play text-neural-blue text-2xl ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-bullseye text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">🎯 AI-matching — 89% accuracy</h3>
+                            <p class="text-gray-600">Our machine learning algorithms match talent and opportunities with unprecedented precision.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-video text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">🎥 Video resumes — save time</h3>
+                            <p class="text-gray-600">Skip the lengthy screening process with 60-second video introductions that showcase personality.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-sync-alt text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">🔄 Talent exchange between companies</h3>
+                            <p class="text-gray-600">Share talent pools and resources with other companies in your network for mutual growth.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-chart-line text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">📊 Real-time analytics & reporting</h3>
+                            <p class="text-gray-600">Track hiring metrics, response rates, and team performance with comprehensive dashboards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Who It's For -->
+    <section id="audience" class="py-20 bg-gradient-to-br from-quantum-gray to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center section-reveal mb-16">
+                <h2 class="text-5xl font-black mb-6">
+                    <span class="text-gray-900">Built for</span>
+                    <span class="bg-gradient-to-r from-neural-blue to-quantum-purple bg-clip-text text-transparent">everyone</span>
+                </h2>
+
+                <!-- Interactive Selector -->
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="audience-tab px-6 py-3 rounded-2xl font-semibold transition-all duration-300 active bg-gradient-to-r from-neural-blue to-quantum-purple text-white" data-audience="founder">
+                        I'm a Founder
+                    </button>
+                    <button class="audience-tab px-6 py-3 rounded-2xl font-semibold transition-all duration-300 glassmorphic text-gray-700" data-audience="intern">
+                        I'm an Intern
+                    </button>
+                    <button class="audience-tab px-6 py-3 rounded-2xl font-semibold transition-all duration-300 glassmorphic text-gray-700" data-audience="hr">
+                        I'm in HR
+                    </button>
+                    <button class="audience-tab px-6 py-3 rounded-2xl font-semibold transition-all duration-300 glassmorphic text-gray-700" data-audience="freelancer">
+                        I'm a Freelancer
+                    </button>
+                </div>
+
+                <!-- Dynamic Content -->
+                <div class="audience-content">
+                    <div id="founder-content" class="audience-panel active">
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="text-3xl font-bold mb-4">Our release is on fire. Our team is not. Let's fix that.</h3>
+                            <p class="text-xl text-gray-600 mb-8">Scale your startup with the right talent, faster than ever. No more endless interviews or expensive agencies.</p>
+                            <!-- Startup team working together -->
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400" alt="Diverse startup team collaborating in modern workspace" class="rounded-2xl shadow-xl w-full h-64 object-cover">
+                        </div>
+                    </div>
+                    <div id="intern-content" class="audience-panel hidden">
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="text-3xl font-bold mb-4">Get hired faster than you can say 'portfolio'.</h3>
+                            <p class="text-xl text-gray-600 mb-8">Skip the application black hole. Show your skills through video, get matched with exciting startups, and land your dream internship.</p>
+                            <!-- Young freelancer working remotely -->
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400" alt="Young professional working remotely with laptop and coffee" class="rounded-2xl shadow-xl w-full h-64 object-cover">
+                        </div>
+                    </div>
+                    <div id="hr-content" class="audience-panel hidden">
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="text-3xl font-bold mb-4">Hire without the headache.</h3>
+                            <p class="text-xl text-gray-600 mb-8">Streamline your recruitment process with AI-powered matching, video interviews, and automated screening tools.</p>
+                            <!-- Business meeting discussion -->
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400" alt="Professional HR meeting with diverse team members discussing strategy" class="rounded-2xl shadow-xl w-full h-64 object-cover">
+                        </div>
+                    </div>
+                    <div id="freelancer-content" class="audience-panel hidden">
+                        <div class="max-w-4xl mx-auto">
+                            <h3 class="text-3xl font-bold mb-4">Meet your next client over coffee, not over months.</h3>
+                            <p class="text-xl text-gray-600 mb-8">Build lasting relationships with companies that value your expertise. Get matched with projects that fit your skills and schedule.</p>
+                            <!-- Creative workspace setup -->
+                            <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400" alt="Creative freelancer workspace with modern tech gadgets and design tools" class="rounded-2xl shadow-xl w-full h-64 object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Benefits -->
+    <section id="benefits" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center section-reveal mb-16">
+                <h2 class="text-5xl font-black mb-6">
+                    <span class="text-gray-900">Why choose</span>
+                    <span class="bg-gradient-to-r from-neural-blue to-quantum-purple bg-clip-text text-transparent">ProxiD</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="benefit-card neomorphic rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-rocket text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Speed — 60% faster hiring</h3>
+                    <p class="text-gray-600">From posting to hiring in days, not weeks. Our AI eliminates the endless back-and-forth of traditional recruitment.</p>
+                </div>
+
+                <div class="benefit-card neomorphic rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-piggy-bank text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Savings — Up to $20K/year</h3>
+                    <p class="text-gray-600">Cut recruitment costs by eliminating expensive agencies and reducing time-to-hire for critical positions.</p>
+                </div>
+
+                <div class="benefit-card neomorphic rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-chart-line text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Cost — 60% cheaper than agencies</h3>
+                    <p class="text-gray-600">Pay only for successful matches, not for promises. No upfront fees, no hidden costs, just results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Pricing -->
+    <section id="pricing" class="py-20 bg-gradient-to-br from-quantum-gray to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center section-reveal mb-16">
+                <h2 class="text-5xl font-black mb-6">
+                    <span class="text-gray-900">Simple</span>
+                    <span class="bg-gradient-to-r from-neural-blue to-quantum-purple bg-clip-text text-transparent">pricing</span>
+                </h2>
+                <p class="text-xl text-gray-600">Choose the plan that fits your team size and hiring needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Starter Plan -->
+                <div class="pricing-card neomorphic rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="mb-6">
+                        <div class="text-4xl mb-2">🚀</div>
+                        <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                        <div class="text-4xl font-black text-green-600 mb-2">Free</div>
+                        <p class="text-gray-600">Perfect for individuals</p>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>5 swipes per day</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Basic profile</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Email support</li>
+                    </ul>
+                    <button class="w-full py-3 glassmorphic rounded-xl hover:shadow-lg transition-all duration-300">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Basic Plan -->
+                <div class="pricing-card neomorphic rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border-2 border-neural-blue">
+                    <div class="mb-6">
+                        <div class="text-4xl mb-2">⚡</div>
+                        <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                        <div class="text-4xl font-black text-neural-blue mb-2">$15<span class="text-lg font-normal">/month</span></div>
+                        <p class="text-gray-600">For small teams</p>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Unlimited swipes</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Video resume</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Basic analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Priority support</li>
+                    </ul>
+                    <button class="w-full py-3 bg-gradient-to-r from-neural-blue to-quantum-purple text-white rounded-xl hover:shadow-lg transition-all duration-300">
+                        Choose Basic
+                    </button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card neomorphic rounded-3xl p-8 text-center hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="mb-6">
+                        <div class="text-4xl mb-2">🔥</div>
+                        <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                        <div class="text-4xl font-black text-quantum-purple mb-2">$199<span class="text-lg font-normal">/month</span></div>
+                        <p class="text-gray-600">For growing companies</p>
+                    </div>
+                    <ul class="space-y-3 mb-8 text-left">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Everything in Basic</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Advanced AI matching</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Team collaboration</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Custom integrations</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>24/7 support</li>
+                    </ul>
+                    <button class="w-full py-3 glassmorphic rounded-xl hover:shadow-lg transition-all duration-300">
+                        Choose Pro
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Final CTA -->
+    <section id="cta" class="py-20 bg-gradient-to-br from-gray-900 via-neural-blue to-quantum-purple text-white relative overflow-hidden">
+        <!-- Floating Elements -->
+        <div class="floating-object top-10 left-10 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
+        <div class="floating-object top-32 right-20 w-48 h-48 bg-white/10 rounded-full blur-xl"></div>
+        <div class="floating-object bottom-20 left-1/4 w-24 h-24 bg-white/5 rounded-full blur-lg"></div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center section-reveal">
+            <h2 class="text-5xl lg:text-6xl font-black mb-6">
+                Your team is waiting.
+                <br>
+                <span class="bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">
+                    Join ProxiD today.
+                </span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                Stop losing great talent to slow hiring processes. Start building your dream team in minutes, not months.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="px-12 py-4 bg-white text-gray-900 font-bold rounded-2xl text-lg hover:bg-gray-100 transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-rocket mr-2"></i>
+                    Start Now
+                </button>
+                <button class="px-12 py-4 glassmorphic text-white font-semibold rounded-2xl border border-white/30 hover:bg-white/10 transition-all duration-300">
+                    <i class="fas fa-play mr-2"></i>
+                    See How It Works
+                </button>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60">
+                <div class="text-center">
+                    <div class="text-3xl font-bold">1,200+</div>
+                    <div class="text-sm">Startups onboard</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">15K+</div>
+                    <div class="text-sm">Successful matches</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">89%</div>
+                    <div class="text-sm">Match accuracy</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold">4.9</div>
+                    <div class="text-sm">User rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-8 h-8 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-lg flex items-center justify-center">
+                        <i class="fas fa-infinity text-white text-sm"></i>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">ProxiD</span>
+                </div>
+                <div class="flex space-x-6 text-gray-600">
+                    <a href="#" class="hover:text-neural-blue transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-neural-blue transition-colors">Terms</a>
+                    <a href="#" class="hover:text-neural-blue transition-colors">Contact</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-100 text-center text-gray-500">
+                <p>&copy; 2025 ProxiD. All rights reserved. Made with ❤️ for the startup community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        // Sticky Navigation
+        const nav = document.querySelector('.sticky-nav');
+        let scrolled = false;
+
+        function updateNav() {
+            if (window.scrollY > 50 && !scrolled) {
+                nav.classList.add('scrolled');
+                scrolled = true;
+            } else if (window.scrollY <= 50 && scrolled) {
+                nav.classList.remove('scrolled');
+                scrolled = false;
+            }
+        }
+
+        window.addEventListener('scroll', updateNav);
+
+        // Section Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Live Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const current = parseInt(counter.textContent);
+                if (current < target) {
+                    const increment = Math.ceil(target / 100);
+                    counter.textContent = Math.min(current + increment, target);
+                }
+            });
+        }
+
+        setInterval(animateCounters, 50);
+
+        // Audience Tab Switching
+        const audienceTabs = document.querySelectorAll('.audience-tab');
+        const audiencePanels = document.querySelectorAll('.audience-panel');
+
+        audienceTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const audience = tab.getAttribute('data-audience');
+
+                // Update active tab
+                audienceTabs.forEach(t => {
+                    t.classList.remove('active', 'bg-gradient-to-r', 'from-neural-blue', 'to-quantum-purple', 'text-white');
+                    t.classList.add('glassmorphic', 'text-gray-700');
+                });
+                tab.classList.remove('glassmorphic', 'text-gray-700');
+                tab.classList.add('active', 'bg-gradient-to-r', 'from-neural-blue', 'to-quantum-purple', 'text-white');
+
+                // Update active panel
+                audiencePanels.forEach(panel => {
+                    panel.classList.remove('active');
+                    panel.classList.add('hidden');
+                });
+                const activePanel = document.getElementById(`${audience}-content`);
+                if (activePanel) {
+                    activePanel.classList.remove('hidden');
+                    activePanel.classList.add('active');
+                }
+            });
+        });
+
+        // Card Swipe Animation Enhancement
+        const swipeCards = document.querySelectorAll('.swipe-card');
+        let currentCard = 0;
+
+        function cycleCards() {
+            // Reset all cards
+            swipeCards.forEach((card, index) => {
+                card.style.zIndex = swipeCards.length - index;
+                card.style.transform = `translateY(${index * 10}px) scale(${1 - index * 0.05})`;
+                card.style.opacity = 1 - index * 0.1;
+            });
+
+            // Animate current card out
+            const activeCard = swipeCards[currentCard];
+            activeCard.style.transform = 'translateX(300px) rotateY(-25deg) rotateZ(10deg)';
+            activeCard.style.opacity = '0';
+
+            setTimeout(() => {
+                // Move card to back
+                activeCard.style.transform = 'translateX(0) rotateY(0deg) rotateZ(0deg)';
+                activeCard.style.opacity = '1';
+                currentCard = (currentCard + 1) % swipeCards.length;
+
+                // Reorder cards
+                swipeCards.forEach((card, index) => {
+                    const adjustedIndex = (index - currentCard + swipeCards.length) % swipeCards.length;
+                    card.style.zIndex = swipeCards.length - adjustedIndex;
+                    card.style.transform = `translateY(${adjustedIndex * 10}px) scale(${1 - adjustedIndex * 0.05})`;
+                    card.style.opacity = 1 - adjustedIndex * 0.1;
+                });
+            }, 600);
+        }
+
+        // Start card cycling
+        setInterval(cycleCards, 4000);
+
+        // Parallax Effect
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-object');
+
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px) rotate(${scrolled * 0.02}deg)`;
+            });
+        }
+
+        window.addEventListener('scroll', updateParallax);
+
+        // Add some interactive hover effects
+        const benefitCards = document.querySelectorAll('.benefit-card');
+        benefitCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        const pricingCards = document.querySelectorAll('.pricing-card');
+        pricingCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // TODO: Implement business logic for form submissions
+        // TODO: Add API integration for real user data
+        // TODO: Implement user authentication and session management
+        // TODO: Add analytics tracking for user interactions
+        // TODO: Implement real-time chat functionality
+        // TODO: Add video call integration for interviews
+        // TODO: Implement payment processing for subscriptions
+        // TODO: Add notification system for matches and messages
+    })();
+    </script>
+</body>
+</html>
