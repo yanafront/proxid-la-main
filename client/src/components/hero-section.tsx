@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Rocket, Play } from "lucide-react";
 import FloatingElements from "./floating-elements";
+import ParallaxBackground from "./parallax-background";
 import SwipeCards from "./swipe-cards";
 import { useIntersection } from "@/hooks/use-intersection";
 
@@ -29,10 +30,12 @@ export default function HeroSection() {
 
   return (
     <section 
+      id="hero"
       ref={ref}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-quantum-gray to-white"
       data-testid="hero-section"
     >
+      <ParallaxBackground intensity={0.3} />
       <FloatingElements />
       
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center z-10">

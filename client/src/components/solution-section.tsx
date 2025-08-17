@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Target, Video, RefreshCw, BarChart3, Play } from "lucide-react";
 import { useIntersection } from "@/hooks/use-intersection";
+import ParallaxBackground from "./parallax-background";
 
 const features = [
   {
@@ -34,11 +35,13 @@ export default function SolutionSection() {
 
   return (
     <section 
+      id="solution"
       ref={ref}
-      className="py-20 bg-white relative"
+      className="py-20 bg-white relative overflow-hidden"
       data-testid="solution-section"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <ParallaxBackground intensity={0.2} />
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}

@@ -54,6 +54,7 @@ export default function PricingSection() {
 
   return (
     <section 
+      id="pricing"
       ref={ref}
       className="py-20 bg-gradient-to-br from-quantum-gray to-white"
       data-testid="pricing-section"

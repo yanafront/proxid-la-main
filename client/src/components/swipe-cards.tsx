@@ -63,13 +63,15 @@ const profiles: Profile[] = [
 export default function SwipeCards() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right'>('right');
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isAnimating) {
+        setSwipeDirection(Math.random() > 0.5 ? 'right' : 'left');
         handleSwipe();
       }
-    }, 4000);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [currentIndex, isAnimating]);
@@ -79,18 +81,19 @@ export default function SwipeCards() {
     setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % profiles.length);
       setIsAnimating(false);
-    }, 600);
+    }, 800);
   };
 
   const handleManualSwipe = (direction: 'left' | 'right') => {
     if (!isAnimating) {
+      setSwipeDirection(direction);
       handleSwipe();
     }
   };
 
   return (
     <div className="relative h-96 lg:h-[500px] flex items-center justify-center">
-      <div className="card-stack relative w-80 h-96">
+      <div className="card-stack relative w-80 h-96 perspective-1000">
         {profiles.map((profile, index) => {
           const isActive = index === currentIndex;
           const offset = (index - currentIndex + profiles.length) % profiles.length;
@@ -98,22 +101,38 @@ export default function SwipeCards() {
           return (
             <motion.div
               key={profile.id}
-              className="swipe-card w-full h-full neomorphic rounded-3xl p-6 flex flex-col"
+              className="swipe-card w-full h-full neomorphic rounded-3xl p-6 flex flex-col shadow-2xl"
               style={{
                 zIndex: profiles.length - offset,
+                transformStyle: 'preserve-3d',
               }}
               initial={false}
               animate={{
-                y: offset * 10,
-                scale: 1 - offset * 0.05,
-                opacity: Math.max(0.6, 1 - offset * 0.1),
-                rotateY: isAnimating && isActive ? [0, -25, 0] : 0,
-                rotateZ: isAnimating && isActive ? [0, 10, 0] : 0,
-                x: isAnimating && isActive ? [0, 300, 0] : 0,
+                y: offset * 15,
+                scale: 1 - offset * 0.08,
+                opacity: Math.max(0.4, 1 - offset * 0.15),
+                rotateY: isAnimating && isActive 
+                  ? [0, swipeDirection === 'right' ? -35 : 35, 0] 
+                  : offset * -5,
+                rotateZ: isAnimating && isActive 
+                  ? [0, swipeDirection === 'right' ? 15 : -15, 0] 
+                  : 0,
+                x: isAnimating && isActive 
+                  ? [0, swipeDirection === 'right' ? 400 : -400, 0] 
+                  : offset * 5,
+                rotateX: offset * 2,
               }}
               transition={{
-                duration: 0.6,
-                ease: [0.175, 0.885, 0.32, 1.275]
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+              }}
+              whileHover={{
+                scale: 1.02,
+                rotateY: 2,
+                transition: { duration: 0.2 }
               }}
               data-testid={`swipe-card-${profile.id}`}
             >

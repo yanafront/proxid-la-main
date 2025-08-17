@@ -28,6 +28,7 @@ export default function BenefitsSection() {
 
   return (
     <section 
+      id="benefits"
       ref={ref}
       className="py-20 bg-white"
       data-testid="benefits-section"

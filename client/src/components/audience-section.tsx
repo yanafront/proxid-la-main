@@ -51,6 +51,7 @@ export default function AudienceSection() {
 
   return (
     <section 
+      id="audience"
       ref={ref}
       className="py-20 bg-gradient-to-br from-quantum-gray to-white"
       data-testid="audience-section"

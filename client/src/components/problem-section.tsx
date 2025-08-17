@@ -27,6 +27,7 @@ export default function ProblemSection() {
 
   return (
     <section 
+      id="problem"
       ref={ref}
       className="py-20 bg-gradient-to-br from-quantum-gray to-white relative overflow-hidden"
       data-testid="problem-section"
