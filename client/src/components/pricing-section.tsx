@@ -5,46 +5,46 @@ import { useIntersection } from "@/hooks/use-intersection";
 const plans = [
   {
     emoji: "🚀",
-    name: "Starter",
-    price: "Free",
-    description: "Perfect for individuals",
+    name: "Старт",
+    price: "Бесплатно",
+    description: "Идеально для частных лиц",
     features: [
-      "5 swipes per day",
-      "Basic profile",
-      "Email support"
+      "5 свайпов в день",
+      "Базовый профиль",
+      "Поддержка по email"
     ],
-    buttonText: "Get Started",
+    buttonText: "Начать",
     popular: false
   },
   {
     emoji: "⚡",
-    name: "Basic",
+    name: "Базовый",
     price: "$15",
-    period: "/month",
-    description: "For small teams",
+    period: "/месяц",
+    description: "Для небольших команд",
     features: [
-      "Unlimited swipes",
-      "Video resume",
-      "Basic analytics",
-      "Priority support"
+      "Неограниченные свайпы",
+      "Видеорезюме",
+      "Базовая аналитика",
+      "Приоритетная поддержка"
     ],
-    buttonText: "Choose Basic",
+    buttonText: "Выбрать Базовый",
     popular: true
   },
   {
     emoji: "🔥",
-    name: "Pro",
+    name: "Про",
     price: "$199",
-    period: "/month",
-    description: "For growing companies",
+    period: "/месяц",
+    description: "Для растущих компаний",
     features: [
-      "Everything in Basic",
-      "Advanced AI matching",
-      "Team collaboration",
-      "Custom integrations",
-      "24/7 support"
+      "Все из Базового",
+      "Продвинутый ИИ-подбор",
+      "Командное сотрудничество",
+      "Кастомные интеграции",
+      "Поддержка 24/7"
     ],
-    buttonText: "Choose Pro",
+    buttonText: "Выбрать Про",
     popular: false
   }
 ];
@@ -67,10 +67,10 @@ export default function PricingSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl font-black mb-6">
-            <span className="text-gray-900">Simple</span>
-            <span className="text-gradient-neural ml-2">pricing</span>
+            <span className="text-gray-900">Простое</span>
+            <span className="text-gradient-neural ml-2">ценообразование</span>
           </h2>
-          <p className="text-xl text-gray-600">Choose the plan that fits your team size and hiring needs</p>
+          <p className="text-xl text-gray-600">Выберите план, который подходит размеру вашей команды и потребностям в найме</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -92,7 +92,7 @@ export default function PricingSection() {
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-neural-blue to-quantum-purple text-white px-4 py-1 rounded-full text-sm font-semibold">
-                  Most Popular
+                  Самый популярный
                 </div>
               )}
               
@@ -100,8 +100,8 @@ export default function PricingSection() {
                 <div className="text-4xl mb-2">{plan.emoji}</div>
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                 <div className={`text-4xl font-black mb-2 ${
-                  plan.name === 'Starter' ? 'text-green-600' : 
-                  plan.name === 'Basic' ? 'text-neural-blue' : 'text-quantum-purple'
+                  plan.name === 'Старт' ? 'text-green-600' : 
+                  plan.name === 'Базовый' ? 'text-neural-blue' : 'text-quantum-purple'
                 }`}>
                   {plan.price}
                   {plan.period && <span className="text-lg font-normal">{plan.period}</span>}

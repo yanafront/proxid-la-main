@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import { ChevronUp, ChevronDown } from "lucide-react";
 
 const navItems = [
-  { id: "hero", label: "Home", icon: "🏠" },
-  { id: "problem", label: "Problem", icon: "⚠️" },
-  { id: "solution", label: "Solution", icon: "💡" },
-  { id: "audience", label: "Who It's For", icon: "👥" },
-  { id: "benefits", label: "Benefits", icon: "⭐" },
-  { id: "pricing", label: "Pricing", icon: "💰" }
+  { id: "hero", label: "Главная", icon: "🏠" },
+  { id: "problem", label: "Проблема", icon: "⚠️" },
+  { id: "solution", label: "Решение", icon: "💡" },
+  { id: "audience", label: "Для кого", icon: "👥" },
+  { id: "benefits", label: "Преимущества", icon: "⭐" },
+  { id: "pricing", label: "Цены", icon: "💰" }
 ];
 
 export default function FloatingNav() {

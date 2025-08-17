@@ -3,10 +3,10 @@ import { Rocket, Play } from "lucide-react";
 import { useIntersection } from "@/hooks/use-intersection";
 
 const stats = [
-  { value: "1,200+", label: "Startups onboard" },
-  { value: "15K+", label: "Successful matches" },
-  { value: "89%", label: "Match accuracy" },
-  { value: "4.9", label: "User rating" }
+  { value: "1,200+", label: "Стартапов на борту" },
+  { value: "15K+", label: "Успешных совпадений" },
+  { value: "89%", label: "Точность подбора" },
+  { value: "4.9", label: "Рейтинг пользователей" }
 ];
 
 export default function CTASection() {
@@ -67,14 +67,14 @@ export default function CTASection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl lg:text-6xl font-black mb-6">
-            Your team is waiting.
+            Твоя команда ждет.
             <br />
             <span className="bg-gradient-to-r from-green-300 to-blue-300 bg-clip-text text-transparent">
-              Join ProxiD today.
+              Присоединяйся к ProxiD сегодня.
             </span>
           </h2>
           <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            Stop losing great talent to slow hiring processes. Start building your dream team in minutes, not months.
+            Перестань терять отличные таланты из-за медленных процессов найма. Начни собирать команду мечты за минуты, а не месяцы.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
@@ -85,7 +85,7 @@ export default function CTASection() {
               data-testid="cta-start-now"
             >
               <Rocket className="inline mr-2" size={20} />
-              Start Now
+              Начать сейчас
             </motion.button>
             <motion.button 
               className="px-12 py-4 glassmorphic text-white font-semibold rounded-2xl border border-white/30 hover:bg-white/10 transition-all duration-300"
@@ -94,7 +94,7 @@ export default function CTASection() {
               data-testid="cta-see-how"
             >
               <Play className="inline mr-2" size={16} />
-              See How It Works
+              Как это работает
             </motion.button>
           </div>
 

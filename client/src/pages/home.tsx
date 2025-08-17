@@ -21,7 +21,7 @@ export default function Home() {
       <BenefitsSection />
       <PricingSection />
       <CTASection />
-      
+
       {/* Footer */}
       <footer className="bg-white py-12 border-t border-gray-100" data-testid="footer">
         <div className="max-w-7xl mx-auto px-6">
@@ -33,13 +33,13 @@ export default function Home() {
               <span className="text-xl font-bold text-gray-900">ProxiD</span>
             </div>
             <div className="flex space-x-6 text-gray-600">
-              <a href="#" className="hover:text-neural-blue transition-colors" data-testid="footer-privacy">Privacy</a>
-              <a href="#" className="hover:text-neural-blue transition-colors" data-testid="footer-terms">Terms</a>
-              <a href="#" className="hover:text-neural-blue transition-colors" data-testid="footer-contact">Contact</a>
+              <a href="/privacy" className="hover:text-neural-blue transition-colors" data-testid="footer-privacy">Конфиденциальность</a>
+              <a href="/terms" className="hover:text-neural-blue transition-colors" data-testid="footer-terms">Условия</a>
+              <a href="/contact" className="hover:text-neural-blue transition-colors" data-testid="footer-contact">Контакты</a>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-gray-100 text-center text-gray-500">
-            <p>&copy; 2024 ProxiD. All rights reserved. Made with ❤️ for the startup community.</p>
+            <p>&copy; 2024 ProxiD. Все права защищены.</p>
           </div>
         </div>
       </footer>

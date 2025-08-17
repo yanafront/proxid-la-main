@@ -15,46 +15,46 @@ interface Profile {
 const profiles: Profile[] = [
   {
     id: "1",
-    name: "Alex Chen",
-    title: "Senior Frontend Developer",
+    name: "Алекс Чен",
+    title: "Старший Frontend разработчик",
     skills: ["React", "TypeScript", "Next.js"],
-    bio: "5+ years building scalable web apps. Currently available for exciting startup projects.",
+    bio: "5+ лет создания масштабируемых веб-приложений. Сейчас доступен для захватывающих стартап-проектов.",
     hourlyRate: 75,
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
   },
   {
     id: "2",
-    name: "Maya Patel",
-    title: "UI/UX Designer",
-    skills: ["Figma", "Design Systems", "Prototyping"],
-    bio: "Crafting beautiful, user-centered designs. Portfolio with 50+ successful projects.",
+    name: "Майя Патель",
+    title: "UI/UX дизайнер",
+    skills: ["Figma", "Дизайн-системы", "Прототипирование"],
+    bio: "Создаю красивые, ориентированные на пользователя дизайны. Портфолио с 50+ успешными проектами.",
     hourlyRate: 60,
     avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b442?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
   },
   {
     id: "3",
-    name: "David Kim",
-    title: "Project Manager",
-    skills: ["Agile", "Scrum", "Leadership"],
-    bio: "Led 20+ teams to successful product launches. Specialized in tech startups and rapid scaling.",
+    name: "Дэвид Ким",
+    title: "Проект-менеджер",
+    skills: ["Agile", "Scrum", "Лидерство"],
+    bio: "Привел 20+ команд к успешному запуску продуктов. Специализируюсь на технологических стартапах и быстром масштабировании.",
     hourlyRate: 85,
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
   },
   {
     id: "4",
-    name: "Sarah Johnson",
-    title: "Full Stack Developer",
+    name: "Сара Джонсон",
+    title: "Full Stack разработчик",
     skills: ["Node.js", "Python", "AWS"],
-    bio: "Building robust backend systems and APIs. Experience with microservices and cloud architecture.",
+    bio: "Создаю надежные бэкенд-системы и API. Опыт с микросервисами и облачной архитектурой.",
     hourlyRate: 80,
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
   },
   {
     id: "5",
-    name: "Marcus Rodriguez",
+    name: "Маркус Родригес",
     title: "Data Scientist",
-    skills: ["Machine Learning", "Python", "SQL"],
-    bio: "Turning data into actionable insights. Specialized in predictive analytics and AI implementation.",
+    skills: ["Машинное обучение", "Python", "SQL"],
+    bio: "Превращаю данные в практические инсайты. Специализируюсь на предиктивной аналитике и внедрении ИИ.",
     hourlyRate: 90,
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"
   }

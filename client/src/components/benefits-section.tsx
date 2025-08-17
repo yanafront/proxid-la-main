@@ -5,20 +5,20 @@ import { useIntersection } from "@/hooks/use-intersection";
 const benefits = [
   {
     icon: Rocket,
-    title: "Speed — 60% faster hiring",
-    description: "From posting to hiring in days, not weeks. Our AI eliminates the endless back-and-forth of traditional recruitment.",
+    title: "Скорость — найм на 60% быстрее",
+    description: "От публикации до найма за дни, а не недели. Наш ИИ устраняет бесконечные переговоры традиционного рекрутинга.",
     gradient: "from-green-400 to-green-600"
   },
   {
     icon: PiggyBank,
-    title: "Savings — Up to $20K/year",
-    description: "Cut recruitment costs by eliminating expensive agencies and reducing time-to-hire for critical positions.",
+    title: "Экономия — до $20K в год",
+    description: "Сократите расходы на рекрутинг, исключив дорогие агентства и сократив время найма на критически важные позиции.",
     gradient: "from-blue-400 to-blue-600"
   },
   {
     icon: TrendingDown,
-    title: "Cost — 60% cheaper than agencies",
-    description: "Pay only for successful matches, not for promises. No upfront fees, no hidden costs, just results.",
+    title: "Стоимость — на 60% дешевле агентств",
+    description: "Платите только за успешные совпадения, а не за обещания. Никаких предоплат, скрытых комиссий, только результаты.",
     gradient: "from-purple-400 to-purple-600"
   }
 ];
@@ -41,7 +41,7 @@ export default function BenefitsSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl font-black mb-6">
-            <span className="text-gray-900">Why choose</span>
+            <span className="text-gray-900">Почему выбирают</span>
             <span className="text-gradient-neural ml-2">ProxiD</span>
           </h2>
         </motion.div>

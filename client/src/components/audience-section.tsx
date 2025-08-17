@@ -11,36 +11,36 @@ interface AudienceContent {
 
 const audienceContent: Record<string, AudienceContent> = {
   founder: {
-    title: "Our release is on fire. Our team is not. Let's fix that.",
-    description: "Scale your startup with the right talent, faster than ever. No more endless interviews or expensive agencies.",
+    title: "Наш релиз в огне. Наша команда — нет. Давайте это исправим.",
+    description: "Масштабируйте свой стартап с правильными талантами быстрее, чем когда-либо. Больше никаких бесконечных собеседований или дорогих агентств.",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
-    imageAlt: "Diverse startup team collaborating in modern workspace"
+    imageAlt: "Разнообразная команда стартапа, сотрудничающая в современном рабочем пространстве"
   },
   intern: {
-    title: "Get hired faster than you can say 'portfolio'.",
-    description: "Skip the application black hole. Show your skills through video, get matched with exciting startups, and land your dream internship.",
+    title: "Получи работу быстрее, чем успеешь сказать 'портфолио'.",
+    description: "Пропустите черную дыру заявок. Покажите свои навыки через видео, познакомьтесь с захватывающими стартапами и получите стажировку мечты.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
-    imageAlt: "Young professional working remotely with laptop and coffee"
+    imageAlt: "Молодой профессионал, работающий удаленно с ноутбуком и кофе"
   },
   hr: {
-    title: "Hire without the headache.",
-    description: "Streamline your recruitment process with AI-powered matching, video interviews, and automated screening tools.",
+    title: "Нанимайте без головной боли.",
+    description: "Оптимизируйте процесс рекрутинга с помощью ИИ-подбора, видео-собеседований и автоматизированных инструментов отбора.",
     image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
-    imageAlt: "Professional HR meeting with diverse team members discussing strategy"
+    imageAlt: "Профессиональная встреча HR с разнообразными членами команды, обсуждающими стратегию"
   },
   freelancer: {
-    title: "Meet your next client over coffee, not over months.",
-    description: "Build lasting relationships with companies that value your expertise. Get matched with projects that fit your skills and schedule.",
+    title: "Познакомьтесь со следующим клиентом за кофе, а не за месяцы.",
+    description: "Стройте долгосрочные отношения с компаниями, которые ценят ваш опыт. Получайте проекты, которые соответствуют вашим навыкам и расписанию.",
     image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
-    imageAlt: "Creative freelancer workspace with modern tech gadgets and design tools"
+    imageAlt: "Творческое рабочее пространство фрилансера с современными технологическими гаджетами и инструментами дизайна"
   }
 };
 
 const audienceOptions = [
-  { key: "founder", label: "I'm a Founder" },
-  { key: "intern", label: "I'm an Intern" },
-  { key: "hr", label: "I'm in HR" },
-  { key: "freelancer", label: "I'm a Freelancer" }
+  { key: "founder", label: "Я основатель" },
+  { key: "intern", label: "Я стажер" },
+  { key: "hr", label: "Я в HR" },
+  { key: "freelancer", label: "Я фрилансер" }
 ];
 
 export default function AudienceSection() {
@@ -64,8 +64,8 @@ export default function AudienceSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl font-black mb-6">
-            <span className="text-gray-900">Built for</span>
-            <span className="text-gradient-neural ml-2">everyone</span>
+            <span className="text-gray-900">Создано для</span>
+            <span className="text-gradient-neural ml-2">каждого</span>
           </h2>
           
           {/* Interactive Selector */}

@@ -6,26 +6,26 @@ import ParallaxBackground from "./parallax-background";
 const features = [
   {
     icon: Target,
-    title: "🎯 AI-matching — 89% accuracy",
-    description: "Our machine learning algorithms match talent and opportunities with unprecedented precision.",
+    title: "🎯 ИИ-подбор — 89% точность",
+    description: "Наши алгоритмы машинного обучения подбирают таланты и возможности с беспрецедентной точностью.",
     gradient: "from-neural-blue to-quantum-purple"
   },
   {
     icon: Video,
-    title: "🎥 Video resumes — save time",
-    description: "Skip the lengthy screening process with 60-second video introductions that showcase personality.",
+    title: "🎥 Видеорезюме — экономия времени",
+    description: "Пропустите длительный процесс отбора с 60-секундными видео-представлениями, которые показывают личность.",
     gradient: "from-neural-blue to-quantum-purple"
   },
   {
     icon: RefreshCw,
-    title: "🔄 Talent exchange between companies",
-    description: "Share talent pools and resources with other companies in your network for mutual growth.",
+    title: "🔄 Обмен талантами между компаниями",
+    description: "Делитесь пулами талантов и ресурсами с другими компаниями в вашей сети для взаимного роста.",
     gradient: "from-neural-blue to-quantum-purple"
   },
   {
     icon: BarChart3,
-    title: "📊 Real-time analytics & reporting",
-    description: "Track hiring metrics, response rates, and team performance with comprehensive dashboards.",
+    title: "📊 Аналитика и отчеты в реальном времени",
+    description: "Отслеживайте метрики найма, показатели откликов и производительность команды с комплексными дашбордами.",
     gradient: "from-neural-blue to-quantum-purple"
   }
 ];
@@ -49,12 +49,12 @@ export default function SolutionSection() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl font-black mb-6">
-            <span className="text-gray-900">Work finds you.</span>
+            <span className="text-gray-900">Работа находит тебя.</span>
             <br />
-            <span className="text-gradient-neural">Not the other way around.</span>
+            <span className="text-gradient-neural">А не наоборот.</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our AI-powered platform revolutionizes how talent and opportunities connect, making hiring as simple as swiping right.
+            Наша платформа на базе ИИ революционизирует то, как таланты и возможности соединяются, делая найм таким же простым, как свайп вправо.
           </p>
         </motion.div>
 
