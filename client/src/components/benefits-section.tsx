@@ -33,12 +33,16 @@ export default function BenefitsSection() {
       className="py-32 bg-white breathing-room-2xl"
       data-testid="benefits-section"
     >
-      <div className="max-w-7xl mx-auto px-8 breathing-room-lg">
+      <div className="max-w-7xl mx-auto px-8 breathing-room-lg py-8">
         <motion.div
           className="text-center mb-24 breathing-room-xl"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{
+            duration: 0.6,
+            ease: [0.4, 0, 0.2, 1],
+            type: "tween"
+          }}
         >
           <h2 className="text-5xl font-black mb-8 breathing-room-md">
             <span className="text-gray-900">Почему выбирают</span>
@@ -46,18 +50,26 @@ export default function BenefitsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-12 breathing-room-lg py-20">
+        <div className="grid md:grid-cols-3 gap-12 breathing-room-lg py-8">
           {benefits.map((benefit, index) => (
             <motion.div
               key={benefit.title}
-              className="neomorphic rounded-3xl p-10 text-center hover:shadow-2xl transition-all duration-500 cursor-pointer breathing-room-md"
-              initial={{ opacity: 0, y: 30 }}
+              className="neomorphic rounded-3xl p-10 text-center hover:shadow-2xl transition-all duration-300 cursor-pointer breathing-room-md"
+              initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: [0.4, 0, 0.2, 1],
+                type: "tween"
+              }}
               whileHover={{
-                y: -8,
-                scale: 1.02,
-                transition: { duration: 0.3 }
+                y: -4,
+                scale: 1.01,
+                transition: {
+                  duration: 0.2,
+                  ease: [0.4, 0, 0.2, 1]
+                }
               }}
               data-testid={`benefit-card-${index}`}
             >

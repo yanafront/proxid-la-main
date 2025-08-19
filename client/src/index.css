@@ -525,6 +525,186 @@
   }
 }
 
+/* Safari animation performance optimizations */
+* {
+  /* Enable hardware acceleration for all elements */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+
+  /* Force GPU acceleration */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  /* Optimize for animations */
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+
+  /* Reduce repaints */
+  -webkit-will-change: auto;
+  -moz-will-change: auto;
+  -ms-will-change: auto;
+  will-change: auto;
+}
+
+/* Optimize specific animation elements */
+.motion-div, [data-framer-motion-component] {
+  /* Hardware acceleration for motion components */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  /* Optimize for Safari */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  /* Reduce layer creation */
+  -webkit-will-change: transform;
+  -moz-will-change: transform;
+  -ms-will-change: transform;
+  will-change: transform;
+}
+
+/* Optimize hover animations */
+.hover\:scale-105:hover,
+.hover\:scale-110:hover,
+.hover\:scale-125:hover {
+  /* Use transform3d for better performance */
+  -webkit-transform: translate3d(0, 0, 0) scale(1.05);
+  -moz-transform: translate3d(0, 0, 0) scale(1.05);
+  -ms-transform: translate3d(0, 0, 0) scale(1.05);
+  -o-transform: translate3d(0, 0, 0) scale(1.05);
+  transform: translate3d(0, 0, 0) scale(1.05);
+
+  /* Optimize transitions */
+  -webkit-transition: -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: -moz-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: -ms-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: -o-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimize floating elements */
+.floating-object, .parallax-element {
+  /* Force GPU acceleration */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  /* Optimize for Safari */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  /* Reduce repaints during animations */
+  -webkit-will-change: transform;
+  -moz-will-change: transform;
+  -ms-will-change: transform;
+  will-change: transform;
+}
+
+/* Optimize card animations */
+.card, .neomorphic, .glassmorphic {
+  /* Hardware acceleration for cards */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  /* Optimize transitions */
+  -webkit-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  -o-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Safari-specific optimizations */
+@supports (-webkit-appearance: none) {
+  /* Reduce motion for better performance */
+  * {
+    -webkit-animation-duration: 0.8s !important;
+    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Optimize transform animations */
+  .motion-div, [data-framer-motion-component] {
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+
+  /* Reduce complex animations on mobile Safari */
+  @media (max-width: 768px) {
+    .floating-object, .parallax-element {
+      -webkit-animation: none !important;
+      animation: none !important;
+      -webkit-transform: none !important;
+      transform: none !important;
+    }
+
+    /* Simplify hover effects on mobile */
+    .hover\:scale-105:hover,
+    .hover\:scale-110:hover,
+    .hover\:scale-125:hover {
+      -webkit-transform: none !important;
+      -moz-transform: none !important;
+      -ms-transform: none !important;
+      -o-transform: none !important;
+      transform: none !important;
+    }
+  }
+}
+
+/* Optimize specific problematic animations */
+@keyframes holographic {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    -webkit-transform: translate3d(0, 0, 0) scale(1.02);
+    -moz-transform: translate3d(0, 0, 0) scale(1.02);
+    -ms-transform: translate3d(0, 0, 0) scale(1.02);
+    -o-transform: translate3d(0, 0, 0) scale(1.02);
+    transform: translate3d(0, 0, 0) scale(1.02);
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: 0.01ms !important;
+    -moz-animation-duration: 0.01ms !important;
+    -ms-animation-duration: 0.01ms !important;
+    -o-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+
+    -webkit-transition-duration: 0.01ms !important;
+    -moz-transition-duration: 0.01ms !important;
+    -ms-transition-duration: 0.01ms !important;
+    -o-transition-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Global overflow prevention */
 * {
   box-sizing: border-box;
@@ -645,4 +825,182 @@ html, body {
   flex: none !important;
   grid-column: unset !important;
   grid-row: unset !important;
+}
+
+/* Additional Safari optimizations */
+@supports (-webkit-appearance: none) {
+  /* Disable complex animations on Safari mobile */
+  @media (max-width: 768px) {
+    .animate-pulse-soft,
+    .animate-bounce,
+    .animate-spin {
+      -webkit-animation: none !important;
+      animation: none !important;
+    }
+
+    /* Simplify hover effects */
+    .hover\:shadow-2xl:hover {
+      -webkit-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+      -moz-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+    }
+
+    /* Reduce transform complexity */
+    .hover\:scale-105:hover,
+    .hover\:scale-110:hover,
+    .hover\:scale-125:hover {
+      -webkit-transform: none !important;
+      -moz-transform: none !important;
+      -ms-transform: none !important;
+      -o-transform: none !important;
+      transform: none !important;
+    }
+  }
+
+  /* Optimize for Safari desktop */
+  @media (min-width: 769px) {
+    /* Reduce animation complexity */
+    .animate-pulse-soft {
+      -webkit-animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+      animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+    }
+
+    /* Simplify complex transforms */
+    .hover\:scale-105:hover {
+      -webkit-transform: translate3d(0, 0, 0) scale(1.02) !important;
+      -moz-transform: translate3d(0, 0, 0) scale(1.02) !important;
+      -ms-transform: translate3d(0, 0, 0) scale(1.02) !important;
+      -o-transform: translate3d(0, 0, 0) scale(1.02) !important;
+      transform: translate3d(0, 0, 0) scale(1.02) !important;
+    }
+
+    .hover\:scale-110:hover {
+      -webkit-transform: translate3d(0, 0, 0) scale(1.05) !important;
+      -moz-transform: translate3d(0, 0, 0) scale(1.05) !important;
+      -ms-transform: translate3d(0, 0, 0) scale(1.05) !important;
+      -o-transform: translate3d(0, 0, 0) scale(1.05) !important;
+      transform: translate3d(0, 0, 0) scale(1.05) !important;
+    }
+  }
+}
+
+/* Simplified pulse animation for better performance */
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Optimize floating elements for Safari */
+.floating-object {
+  /* Use simpler transforms */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  /* Reduce animation complexity */
+  -webkit-animation: float 6s ease-in-out infinite;
+  -moz-animation: float 6s ease-in-out infinite;
+  -ms-animation: float 6s ease-in-out infinite;
+  -o-animation: float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    -webkit-transform: translate3d(0, -10px, 0);
+    -moz-transform: translate3d(0, -10px, 0);
+    -ms-transform: translate3d(0, -10px, 0);
+    -o-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+/* Optimize parallax for Safari */
+.parallax-element {
+  /* Use simpler transforms */
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+  /* Reduce motion on mobile */
+  @media (max-width: 768px) {
+    -webkit-transform: none !important;
+    -moz-transform: none !important;
+    -ms-transform: none !important;
+    -o-transform: none !important;
+    transform: none !important;
+  }
+}
+
+/* Optimize card shadows for Safari */
+.card, .neomorphic, .glassmorphic {
+  /* Use simpler shadows */
+  -webkit-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
+  /* Optimize transitions */
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+/* Optimize hover effects for Safari */
+.card:hover, .neomorphic:hover, .glassmorphic:hover {
+  /* Use simpler transforms */
+  -webkit-transform: translate3d(0, -2px, 0);
+  -moz-transform: translate3d(0, -2px, 0);
+  -ms-transform: translate3d(0, -2px, 0);
+  -o-transform: translate3d(0, -2px, 0);
+  transform: translate3d(0, -2px, 0);
+
+  /* Use simpler shadows */
+  -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.sticky-nav {
+  background: white;
+}
+
+.mobile-menu {
+  max-width: 250px !important;
+  min-width: 250px !important;
+
+  .tg-bot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+
+    white-space: nowrap;
+    flex: 1;
+
+    svg {
+      max-width: 24px !important;
+    }
+
+    span {
+      text-align: left;
+      width: auto !important;
+    }
+  }
 }

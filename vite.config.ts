@@ -29,9 +29,10 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    fs: {
-      strict: true,
-      deny: ["**/.*"],
-    },
-  },
+    middlewareMode: true,
+    hmr: {
+      port: 3001,
+      host: 'localhost'
+    }
+  }
 });

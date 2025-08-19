@@ -1,25 +1,44 @@
-import { useState, useEffect, useRef, RefObject } from "react";
+import { useEffect, useRef, useState } from 'react';
 
-export function useIntersection(
-  options: IntersectionObserverInit = {}
-): [RefObject<HTMLDivElement>, boolean] {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+interface UseIntersectionOptions {
+  threshold?: number;
+  rootMargin?: string;
+  root?: Element | null;
+}
+
+export function useIntersection(options: UseIntersectionOptions = {}) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
+    const element = ref.current;
+    if (!element) return;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      setIsIntersecting(entry.isIntersecting);
-    }, {
-      threshold: 0.1,
-      ...options
-    });
+    // Safari optimization: use passive listener
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Use requestAnimationFrame for better performance
+        if (typeof window !== 'undefined' && window.requestAnimationFrame) {
+          window.requestAnimationFrame(() => {
+            setIsVisible(entry.isIntersecting);
+          });
+        } else {
+          setIsVisible(entry.isIntersecting);
+        }
+      },
+      {
+        threshold: options.threshold || 0.1,
+        rootMargin: options.rootMargin || '0px',
+        root: options.root || null,
+      }
+    );
 
-    observer.observe(ref.current);
+    observer.observe(element);
 
-    return () => observer.disconnect();
-  }, [options]);
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [options.threshold, options.rootMargin, options.root]);
 
-  return [ref, isIntersecting];
+  return [ref, isVisible] as const;
 }

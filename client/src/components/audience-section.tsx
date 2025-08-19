@@ -17,7 +17,7 @@ const audienceContent: Record<string, AudienceContent> = {
     imageAlt: "Разнообразная команда стартапа, сотрудничающая в современном рабочем пространстве"
   },
   intern: {
-    title: "Получи работу быстрее, чем успеешь сказать 'портфолио'.",
+    title: "Получи работу быстрее, чем успеешь сказать «портфолио»",
     description: "Пропустите черную дыру заявок. Покажите свои навыки через видео, познакомьтесь с захватывающими стартапами и получите стажировку мечты.",
     image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
     imageAlt: "Молодой профессионал, работающий удаленно с ноутбуком и кофе"
@@ -69,7 +69,7 @@ export default function AudienceSection() {
           </h2>
 
           {/* Interactive Selector */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-4 mb-12 pb-8">
             {audienceOptions.map(({ key, label }) => (
               <motion.button
                 key={key}

@@ -127,7 +127,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <motion.div
-        className={`fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-white/95 backdrop-blur-xl shadow-2xl z-40 lg:hidden overflow-x-hidden ${
+        className={`mobile-menu fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-white/95 backdrop-blur-xl shadow-2xl z-40 lg:hidden overflow-x-hidden ${
           isMobileMenuOpen ? 'block' : 'hidden'
         }`}
         initial={{ x: '100%' }}
@@ -158,7 +158,7 @@ export default function Navigation() {
                 window.open('https://t.me/proxiDBot', '_blank');
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
+              className="tg-bot w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               data-testid="mobile-telegram-bot-button"

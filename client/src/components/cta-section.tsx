@@ -83,19 +83,12 @@ export default function CTASection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               data-testid="cta-start-now"
+              onClick={() => window.open('https://t.me/proxiDBot', '_blank')}
             >
               <Rocket className="inline mr-2" size={20} />
               Начать сейчас
             </motion.button>
-            <motion.button 
-              className="px-12 py-4 glassmorphic text-white font-semibold rounded-2xl border border-white/30 hover:bg-white/10 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              data-testid="cta-see-how"
-            >
-              <Play className="inline mr-2" size={16} />
-              Как это работает
-            </motion.button>
+    
           </div>
 
           {/* Trust Indicators */}
