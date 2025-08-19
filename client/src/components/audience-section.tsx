@@ -11,7 +11,7 @@ interface AudienceContent {
 
 const audienceContent: Record<string, AudienceContent> = {
   founder: {
-    title: "Наш релиз в огне. Наша команда — нет. Давайте это исправим.",
+    title: "Горят дедлайны — пусть не горит команда.",
     description: "Масштабируйте свой стартап с правильными талантами быстрее, чем когда-либо. Больше никаких бесконечных собеседований или дорогих агентств.",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
     imageAlt: "Разнообразная команда стартапа, сотрудничающая в современном рабочем пространстве"
@@ -50,14 +50,14 @@ export default function AudienceSection() {
   const currentContent = audienceContent[activeAudience];
 
   return (
-    <section 
+    <section
       id="audience"
       ref={ref}
       className="py-20 bg-gradient-to-br from-quantum-gray to-white"
       data-testid="audience-section"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -67,7 +67,7 @@ export default function AudienceSection() {
             <span className="text-gray-900">Создано для</span>
             <span className="text-gradient-neural ml-2">каждого</span>
           </h2>
-          
+
           {/* Interactive Selector */}
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             {audienceOptions.map(({ key, label }) => (
@@ -101,8 +101,8 @@ export default function AudienceSection() {
             >
               <h3 className="text-3xl font-bold mb-4">{currentContent.title}</h3>
               <p className="text-xl text-gray-600 mb-8">{currentContent.description}</p>
-              <img 
-                src={currentContent.image} 
+              <img
+                src={currentContent.image}
                 alt={currentContent.imageAlt}
                 className="rounded-2xl shadow-xl w-full h-64 object-cover"
               />

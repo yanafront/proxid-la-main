@@ -11,7 +11,7 @@ import { Infinity } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full max-w-screen overflow-x-hidden">
       <Navigation />
       <FloatingNav />
       <HeroSection />
@@ -23,22 +23,22 @@ export default function Home() {
       <CTASection />
 
       {/* Footer */}
-      <footer className="bg-white py-12 border-t border-gray-100" data-testid="footer">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+      <footer className="bg-white py-8 sm:py-12 border-t border-gray-100" data-testid="footer">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-lg flex items-center justify-center">
                 <Infinity className="text-white" size={16} />
               </div>
-              <span className="text-xl font-bold text-gray-900">ProxiD</span>
+              <span className="text-lg sm:text-xl font-bold text-gray-900">ProxiD</span>
             </div>
-            <div className="flex space-x-6 text-gray-600">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-6 text-gray-600 text-center sm:text-left text-sm sm:text-base">
               <a href="/privacy" className="hover:text-neural-blue transition-colors" data-testid="footer-privacy">Конфиденциальность</a>
               <a href="/terms" className="hover:text-neural-blue transition-colors" data-testid="footer-terms">Условия</a>
               <a href="/contact" className="hover:text-neural-blue transition-colors" data-testid="footer-contact">Контакты</a>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-gray-100 text-center text-gray-500">
+          <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-100 text-center text-gray-500 text-sm">
             <p>&copy; 2024 ProxiD. Все права защищены.</p>
           </div>
         </div>

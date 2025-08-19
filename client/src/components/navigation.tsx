@@ -57,7 +57,7 @@ export default function Navigation() {
   return (
     <>
       <motion.nav 
-        className={`sticky-nav fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 ${
+        className={`sticky-nav fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 w-full max-w-screen overflow-x-hidden ${
           isScrolled ? 'scrolled backdrop-blur-xl bg-white/90 border-b border-neural-blue/10 shadow-lg' : ''
         }`}
         initial={{ y: -100 }}
@@ -68,7 +68,7 @@ export default function Navigation() {
         <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-neural-blue to-quantum-purple transition-all duration-300"
              style={{ width: `${scrollProgress * 100}%` }} />
         
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between w-full overflow-x-hidden">
           <motion.div 
             className="flex items-center space-x-3 cursor-pointer"
             whileHover={{ scale: 1.05 }}
@@ -101,7 +101,7 @@ export default function Navigation() {
           
           <div className="flex items-center space-x-4">
             <motion.button 
-              className="px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 flex items-center space-x-2"
+              className="hidden lg:flex px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 items-center space-x-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => window.open('https://t.me/proxiDBot', '_blank')}
@@ -127,7 +127,7 @@ export default function Navigation() {
 
       {/* Mobile Menu */}
       <motion.div
-        className={`fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl shadow-2xl z-40 lg:hidden ${
+        className={`fixed top-0 right-0 h-full w-80 max-w-[80vw] bg-white/95 backdrop-blur-xl shadow-2xl z-40 lg:hidden overflow-x-hidden ${
           isMobileMenuOpen ? 'block' : 'hidden'
         }`}
         initial={{ x: '100%' }}
