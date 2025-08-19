@@ -32,23 +32,23 @@ export default function HeroSection() {
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-quantum-gray to-white pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-quantum-gray to-white pt-20 breathing-room-2xl"
       data-testid="hero-section"
     >
       <ParallaxBackground intensity={0.3} />
       <FloatingElements />
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center z-10">
+      <div className="max-w-7xl mx-auto px-8 grid lg:grid-cols-2 gap-16 items-center z-10 breathing-room-lg">
         {/* Left Content */}
         <motion.div
-          className="space-y-8"
+          className="space-y-12 breathing-room-xl"
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="space-y-4">
+          <div className="space-y-8 breathing-room-lg">
             <motion.h1
-              className="text-5xl lg:text-7xl font-black leading-tight"
+              className="text-5xl lg:text-7xl font-black leading-tight breathing-room-md"
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -61,11 +61,11 @@ export default function HeroSection() {
               <br />
               <span className="text-gray-900">нехватки людей.</span>
               <br />
-              <span className="text-sm font-medium text-quantum-purple">Не на нашей вахте.</span>
+              <span className="text-sm font-medium text-quantum-purple breathing-room-sm">Не на нашей вахте.</span>
             </motion.h1>
 
             <motion.p
-              className="text-xl text-gray-600 max-w-lg"
+              className="text-xl text-gray-600 max-w-lg breathing-room-md"
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -75,19 +75,19 @@ export default function HeroSection() {
           </div>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-col sm:flex-row gap-6 breathing-room-md"
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8 }}
             onClick={() => window.open('https://t.me/proxiDBot', '_blank')}
           >
             <motion.button
-              className="holographic-button px-8 py-4 text-white font-bold rounded-2xl text-lg animate-pulse-soft"
+              className="holographic-button px-10 py-5 text-white font-bold rounded-2xl text-lg animate-pulse-soft breathing-room-sm"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               data-testid="cta-try-free"
             >
-              <Rocket className="inline mr-2" size={20} />
+              <Rocket className="inline mr-3" size={22} />
               Попробовать бесплатно
             </motion.button>
 
@@ -104,19 +104,19 @@ export default function HeroSection() {
 
           {/* Live Stats */}
           <motion.div
-            className="flex space-x-8 pt-8"
+            className="flex space-x-12 pt-12 breathing-room-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
-            <div className="text-center">
-              <div className="text-3xl font-bold text-neural-blue" data-testid="job-seekers-count">
+            <div className="text-center breathing-room-sm">
+              <div className="text-3xl font-bold text-neural-blue breathing-room-sm" data-testid="job-seekers-count">
                 {jobSeekers}
               </div>
               <div className="text-sm text-gray-600">Ищут работу</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-quantum-purple" data-testid="talent-seekers-count">
+            <div className="text-center breathing-room-sm">
+              <div className="text-3xl font-bold text-quantum-purple breathing-room-sm" data-testid="talent-seekers-count">
                 {talentSeekers}
               </div>
               <div className="text-sm text-gray-600">Ищут таланты</div>
@@ -126,7 +126,7 @@ export default function HeroSection() {
 
         {/* Right Content - Swipe Demo */}
         <motion.div
-          className="relative"
+          className="relative breathing-room-lg"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}

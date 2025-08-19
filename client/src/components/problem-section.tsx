@@ -26,14 +26,14 @@ export default function ProblemSection() {
   const [ref, isVisible] = useIntersection({ threshold: 0.3 });
 
   return (
-    <section 
+    <section
       id="problem"
       ref={ref}
       className="py-20 bg-gradient-to-br from-quantum-gray to-white relative overflow-hidden"
       data-testid="problem-section"
     >
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
@@ -47,7 +47,7 @@ export default function ProblemSection() {
             <span className="text-gray-900">убивает стартапы</span>
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8 mt-16">
+          <div className="grid md:grid-cols-3 gap-8 mt-16 py-20">
             {problems.map((problem, index) => (
               <motion.div
                 key={problem.title}

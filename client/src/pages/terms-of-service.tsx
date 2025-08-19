@@ -37,8 +37,8 @@ export default function TermsOfService() {
           <section className="bg-white rounded-2xl p-8 shadow-sm">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Общие положения</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Настоящее Пользовательское соглашение (далее — «Соглашение») регулирует отношения между платформой ProxiD
-              (далее — «Платформа», «мы», «нас», «наш») и пользователями (далее — «Пользователь», «вы», «ваш»)
+                      Настоящее Пользовательское соглашение (далее - «Соглашение») регулирует отношения между платформой ProxiD
+        (далее - «Платформа», «мы», «нас», «наш») и пользователями (далее - «Пользователь», «вы», «ваш»)
               в соответствии с законодательством Республики Беларусь.
             </p>
             <p className="text-gray-700 leading-relaxed">
@@ -52,7 +52,7 @@ export default function TermsOfService() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Описание услуг</h2>
             <div className="space-y-4">
               <p className="text-gray-700 leading-relaxed">
-                ProxiD — это платформа для обмена талантами, которая предоставляет следующие услуги:
+                ProxiD - это платформа для обмена талантами, которая предоставляет следующие услуги:
               </p>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-3">

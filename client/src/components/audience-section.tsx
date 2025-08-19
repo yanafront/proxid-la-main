@@ -11,7 +11,7 @@ interface AudienceContent {
 
 const audienceContent: Record<string, AudienceContent> = {
   founder: {
-    title: "Горят дедлайны — пусть не горит команда.",
+    title: "Горят дедлайны - пусть не горит команда.",
     description: "Масштабируйте свой стартап с правильными талантами быстрее, чем когда-либо. Больше никаких бесконечных собеседований или дорогих агентств.",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
     imageAlt: "Разнообразная команда стартапа, сотрудничающая в современном рабочем пространстве"
@@ -29,7 +29,7 @@ const audienceContent: Record<string, AudienceContent> = {
     imageAlt: "Профессиональная встреча HR с разнообразными членами команды, обсуждающими стратегию"
   },
   freelancer: {
-    title: "Познакомьтесь со следующим клиентом за кофе, а не за месяцы.",
+    title: "Ваш следующий клиент - ближе, чем вы думаете: без долгих ожиданий.",
     description: "Стройте долгосрочные отношения с компаниями, которые ценят ваш опыт. Получайте проекты, которые соответствуют вашим навыкам и расписанию.",
     image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=400",
     imageAlt: "Творческое рабочее пространство фрилансера с современными технологическими гаджетами и инструментами дизайна"
@@ -37,10 +37,10 @@ const audienceContent: Record<string, AudienceContent> = {
 };
 
 const audienceOptions = [
-  { key: "founder", label: "Я основатель" },
-  { key: "intern", label: "Я стажер" },
-  { key: "hr", label: "Я в HR" },
-  { key: "freelancer", label: "Я фрилансер" }
+  { key: "founder", label: "Основатель" },
+  { key: "intern", label: "Стажер" },
+  { key: "hr", label: "HR" },
+  { key: "freelancer", label: "Фрилансер" }
 ];
 
 export default function AudienceSection() {

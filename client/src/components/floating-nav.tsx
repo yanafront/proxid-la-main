@@ -65,7 +65,7 @@ export default function FloatingNav() {
 
   return (
     <motion.div
-      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40"
+      className="fixed right-4 sm:right-6 top-1/2 transform -translate-y-1/2 z-40 nav-mobile"
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 100 }}

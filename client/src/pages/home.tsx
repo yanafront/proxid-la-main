@@ -26,8 +26,8 @@ export default function Home() {
       <footer className="bg-white py-8 sm:py-12 border-t border-gray-100" data-testid="footer">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-lg flex items-center justify-center">
+            <div className="flex items-center space-x-3 footer-logo">
+              <div className="w-8 h-8 logo-footer bg-gradient-to-br from-neural-blue to-quantum-purple rounded-lg flex items-center justify-center">
                 <Infinity className="text-white" size={16} />
               </div>
               <span className="text-lg sm:text-xl font-bold text-gray-900">ProxiD</span>

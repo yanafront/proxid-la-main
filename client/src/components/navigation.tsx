@@ -21,7 +21,7 @@ export default function Navigation() {
 
   useEffect(() => {
     setIsScrolled(scrollY > 50);
-    
+
     // Calculate scroll progress
     const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = Math.min(scrollY / documentHeight, 1);
@@ -56,7 +56,7 @@ export default function Navigation() {
 
   return (
     <>
-      <motion.nav 
+      <motion.nav
         className={`sticky-nav fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300 w-full max-w-screen overflow-x-hidden ${
           isScrolled ? 'scrolled backdrop-blur-xl bg-white/90 border-b border-neural-blue/10 shadow-lg' : ''
         }`}
@@ -67,20 +67,20 @@ export default function Navigation() {
         {/* Progress Bar */}
         <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-neural-blue to-quantum-purple transition-all duration-300"
              style={{ width: `${scrollProgress * 100}%` }} />
-        
+
         <div className="max-w-7xl mx-auto flex items-center justify-between w-full overflow-x-hidden">
-          <motion.div 
+          <motion.div
             className="flex items-center space-x-3 cursor-pointer"
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection("hero")}
             data-testid="logo"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-xl flex items-center justify-center">
+            <div className="logo w-10 h-10 bg-gradient-to-br from-neural-blue to-quantum-purple rounded-xl flex items-center justify-center">
               <Infinity className="text-white" size={20} />
             </div>
             <span className="text-2xl font-bold text-gray-900">ProxiD</span>
           </motion.div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex space-x-8">
             {navItems.map((item) => (
@@ -98,9 +98,9 @@ export default function Navigation() {
               </button>
             ))}
           </div>
-          
-          <div className="flex items-center space-x-4">
-            <motion.button 
+
+          <div className="flex space-x-4 items-center justify-end">
+            <motion.button
               className="hidden lg:flex px-6 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 items-center space-x-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -112,10 +112,10 @@ export default function Navigation() {
               </svg>
               <span>Написать боту</span>
             </motion.button>
-            
+
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2"
+              className="lg:hidden p-2 hamburger"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               data-testid="mobile-menu-button"
             >
@@ -151,7 +151,7 @@ export default function Navigation() {
                 {item.label}
               </button>
             ))}
-            
+
             {/* Telegram Bot Button in Mobile Menu */}
             <motion.button
               onClick={() => {
