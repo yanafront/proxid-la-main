@@ -92,12 +92,12 @@ export default function SwipeCards() {
   };
 
   return (
-    <div className="relative h-96 lg:h-[500px] flex items-center justify-center">
+    <div className="relative h-96 lg:h-[550px] flex items-center justify-center">
       <div className="card-stack relative w-80 h-96 perspective-1000">
         {profiles.map((profile, index) => {
           const isActive = index === currentIndex;
           const offset = (index - currentIndex + profiles.length) % profiles.length;
-          
+
           return (
             <motion.div
               key={profile.id}
@@ -111,14 +111,14 @@ export default function SwipeCards() {
                 y: offset * 15,
                 scale: 1 - offset * 0.08,
                 opacity: Math.max(0.4, 1 - offset * 0.15),
-                rotateY: isAnimating && isActive 
-                  ? [0, swipeDirection === 'right' ? -35 : 35, 0] 
+                rotateY: isAnimating && isActive
+                  ? [0, swipeDirection === 'right' ? -35 : 35, 0]
                   : offset * -5,
-                rotateZ: isAnimating && isActive 
-                  ? [0, swipeDirection === 'right' ? 15 : -15, 0] 
+                rotateZ: isAnimating && isActive
+                  ? [0, swipeDirection === 'right' ? 15 : -15, 0]
                   : 0,
-                x: isAnimating && isActive 
-                  ? [0, swipeDirection === 'right' ? 400 : -400, 0] 
+                x: isAnimating && isActive
+                  ? [0, swipeDirection === 'right' ? 400 : -400, 0]
                   : offset * 5,
                 rotateX: offset * 2,
               }}
@@ -137,8 +137,8 @@ export default function SwipeCards() {
               data-testid={`swipe-card-${profile.id}`}
             >
               <div className="flex items-center space-x-4 mb-4">
-                <img 
-                  src={profile.avatar} 
+                <img
+                  src={profile.avatar}
                   alt={profile.name}
                   className="w-16 h-16 rounded-full object-cover"
                   data-testid={`avatar-${profile.id}`}
@@ -152,11 +152,11 @@ export default function SwipeCards() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="space-y-3 flex-1">
                 <div className="flex flex-wrap gap-2" data-testid={`skills-${profile.id}`}>
                   {profile.skills.map((skill) => (
-                    <span 
+                    <span
                       key={skill}
                       className="px-3 py-1 bg-neural-blue/10 text-neural-blue rounded-full text-sm"
                     >
@@ -171,16 +171,16 @@ export default function SwipeCards() {
                   ${profile.hourlyRate}/hr
                 </div>
               </div>
-              
+
               <div className="flex justify-between pt-4">
-                <button 
+                <button
                   className="w-12 h-12 bg-red-100 text-red-500 rounded-full flex items-center justify-center hover:bg-red-200 transition-colors"
                   onClick={() => handleManualSwipe('left')}
                   data-testid={`reject-${profile.id}`}
                 >
                   <X size={20} />
                 </button>
-                <button 
+                <button
                   className="w-12 h-12 bg-green-100 text-green-500 rounded-full flex items-center justify-center hover:bg-green-200 transition-colors"
                   onClick={() => handleManualSwipe('right')}
                   data-testid={`like-${profile.id}`}

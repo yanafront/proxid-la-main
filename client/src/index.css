@@ -358,8 +358,9 @@
   }
 
   .card-stack {
-    perspective: 1200px;
+    perspective: 1000px;
     transform-style: preserve-3d;
+    overflow: hidden;
   }
 
   .perspective-1000 {
@@ -755,6 +756,48 @@ html, body {
   min-width: auto !important;
   overflow: visible !important;
   z-index: 40 !important;
+  /* Ensure it stays fixed and centered */
+  position: fixed !important;
+  top: 50% !important;
+  right: 1rem !important;
+  transform: translateY(-50%) !important;
+}
+
+/* Hide floating navigation on mobile and tablet */
+@media (max-width: 1023px) {
+  [data-testid="floating-nav"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* Show floating navigation on desktop */
+@media (min-width: 1024px) {
+  [data-testid="floating-nav"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  /* Larger navigation dots on desktop */
+  [data-testid="floating-nav"] button[data-testid*="floating-nav-"] {
+    width: 1rem !important;
+    height: 1rem !important;
+    min-width: 1rem !important;
+    min-height: 1rem !important;
+  }
+
+  /* Larger arrow buttons on desktop */
+  [data-testid="floating-nav"] button[data-testid="nav-previous"],
+  [data-testid="floating-nav"] button[data-testid="nav-next"] {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    min-width: 2.5rem !important;
+    min-height: 2.5rem !important;
+  }
 }
 
 [data-testid="floating-nav"] * {
@@ -781,7 +824,10 @@ html, body {
   }
 
   [data-testid="floating-nav"] {
+    position: fixed !important;
     right: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     width: auto !important;
     max-width: none !important;
   }
@@ -796,7 +842,10 @@ html, body {
   }
 
   [data-testid="floating-nav"] {
+    position: fixed !important;
     right: 0.75rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
     width: auto !important;
     max-width: none !important;
   }
@@ -809,6 +858,29 @@ html, body {
   max-width: none !important;
   min-width: auto !important;
   overflow: visible !important;
+}
+
+/* Ensure floating navigation is always fixed right and centered */
+[data-testid="floating-nav"] {
+  position: fixed !important;
+  right: 1rem !important;
+  left: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: auto !important;
+  max-width: none !important;
+  min-width: auto !important;
+  overflow: visible !important;
+  z-index: 40 !important;
+}
+
+/* Override any conflicting positioning */
+[data-testid="floating-nav"] {
+  position: fixed !important;
+  right: 1rem !important;
+  left: auto !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
 }
 
 /* Ensure transform and positioning work correctly */

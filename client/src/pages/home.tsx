@@ -39,7 +39,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-100 text-center text-gray-500 text-sm">
-            <p>&copy; 2024 ProxiD. Все права защищены.</p>
+            <p>&copy; {new Date().getFullYear()} ProxiD. Все права защищены.</p>
           </div>
         </div>
       </footer>
