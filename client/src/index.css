@@ -1197,6 +1197,183 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Disable content animations on mobile (keep menu and swipe animations) */
+@media (max-width: 1023px) {
+  /* Disable content animations but keep menu and swipe */
+  .hero-section, .problem-section, .solution-section, 
+  .audience-section, .benefits-section, .pricing-section, 
+  .cta-section, .floating-elements, .parallax-element {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Disable floating background elements in solution section */
+  #solution .absolute.inset-0.overflow-hidden.pointer-events-none > div {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Disable specific floating elements in solution section */
+  #solution .absolute.w-96.h-96,
+  #solution .absolute.w-64.h-64,
+  #solution .absolute.w-48.h-48,
+  #solution .absolute.w-16.h-16,
+  #solution .absolute.w-12.h-12 {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Disable grid background animation */
+  #solution .absolute.inset-0.opacity-5 {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+  
+  /* Ensure solution section content is visible */
+  #solution {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+  
+  #solution * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inherit !important;
+  }
+  
+  /* Force content visibility in solution section */
+  #solution .text-center,
+  #solution .grid,
+  #solution .flex,
+  #solution img,
+  #solution button {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inherit !important;
+  }
+  
+  /* Ensure pricing section content is visible */
+  #pricing {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+  
+  #pricing * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inherit !important;
+  }
+  
+  /* Force content visibility in pricing section */
+  #pricing .text-center,
+  #pricing .grid,
+  #pricing .flex,
+  #pricing .card,
+  #pricing button {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inherit !important;
+  }
+
+  /* Disable intersection observer animations for content */
+  .section-reveal, .fade-in, .slide-up, .slide-down {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Disable floating elements animation */
+  .floating-object {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Disable hover effects on content */
+  .hover\:scale-105:hover,
+  .hover\:scale-110:hover,
+  .hover\:scale-125:hover,
+  .hover\:shadow-2xl:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Force content sections to be visible */
+  .hero-section, .problem-section, .solution-section, 
+  .audience-section, .benefits-section, .pricing-section, 
+  .cta-section, .floating-elements {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    display: block !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  
+  /* Override any conflicting rules for solution section */
+  #solution.solution-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  
+  /* Override any conflicting rules for pricing section */
+  #pricing.pricing-section {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Ensure all content is visible */
+  .opacity-0, .opacity-10, .opacity-20, .opacity-30, .opacity-40, .opacity-50 {
+    opacity: 1 !important;
+  }
+
+  .translate-y-50, .translate-y-100, .translate-x-50, .translate-x-100 {
+    transform: none !important;
+  }
+
+  .scale-0, .scale-50, .scale-75, .scale-90, .scale-95 {
+    transform: scale(1) !important;
+  }
+
+  .rotate-0, .rotate-1, .rotate-2, .rotate-3, .rotate-6, .rotate-12, .rotate-45, .rotate-90, .rotate-180 {
+    transform: none !important;
+  }
+
+  /* Force hide desktop navigation on mobile */
+  .hidden.lg\\:flex {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  
+  /* Hide Telegram bot button on mobile */
+  [data-testid="telegram-bot-button"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
 /* Safari-specific optimizations */
 @supports (-webkit-appearance: none) {
   /* Reduce motion for better performance */
