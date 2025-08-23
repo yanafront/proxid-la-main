@@ -1,5 +1,4 @@
 import Navigation from "@/components/navigation";
-import FloatingNav from "@/components/floating-nav";
 import HeroSection from "@/components/hero-section";
 import ProblemSection from "@/components/problem-section";
 import SolutionSection from "@/components/solution-section";
@@ -13,7 +12,6 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full max-w-screen overflow-x-hidden">
       <Navigation />
-      <FloatingNav />
       <HeroSection />
       <ProblemSection />
       <SolutionSection />

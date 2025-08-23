@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronUp, ChevronDown } from "lucide-react";
+import { createPortal } from "react-dom";
 
 const navItems = [
   { id: "hero", label: "Главная", icon: "🏠" },
@@ -13,13 +14,10 @@ const navItems = [
 
 export default function FloatingNav() {
   const [activeSection, setActiveSection] = useState("hero");
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsVisible(scrollY > 200);
-
       const sections = navItems.map(item => document.getElementById(item.id));
       const scrollPosition = window.scrollY + 200;
 
@@ -61,18 +59,31 @@ export default function FloatingNav() {
     }
   };
 
-  if (!isVisible) return null;
 
-  return (
-    <motion.div
-      className="fixed right-4 sm:right-6 top-1/2 transform -translate-y-1/2 z-40 nav-mobile"
-      initial={{ opacity: 0, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      exit={{ opacity: 0, x: 100 }}
-      transition={{ duration: 0.3 }}
-      data-testid="floating-nav"
+
+  return createPortal(
+    <div 
+      className="floating-nav-container flex items-center justify-center"
+      style={{
+        position: 'fixed',
+        right: '1rem',
+        top: '0',
+        height: '100vh',
+        zIndex: 9999,
+        width: '5rem',
+        transform: 'none',
+        overflow: 'visible'
+      }}
     >
-      <div className="flex flex-col items-center space-y-2">
+      <motion.div
+        className="slide-menu nav-mobile"
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: 100 }}
+        transition={{ duration: 0.3 }}
+        data-testid="floating-nav"
+      >
+        <div className="flex flex-col items-center space-y-2">
         {/* Previous Section Button */}
         <motion.button
           onClick={scrollToPrevious}
@@ -126,7 +137,9 @@ export default function FloatingNav() {
         >
           <ChevronDown size={16} className="text-neural-blue" />
         </motion.button>
-      </div>
-    </motion.div>
+        </div>
+      </motion.div>
+    </div>,
+    document.body
   );
 }

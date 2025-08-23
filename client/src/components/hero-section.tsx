@@ -52,7 +52,7 @@ export default function HeroSection() {
         >
           <div className="space-y-8 breathing-room-lg">
             <motion.h1
-              className="text-5xl lg:text-7xl font-black leading-tight breathing-room-md"
+              className="text-6xl lg:text-7xl font-black leading-tight breathing-room-md"
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -72,7 +72,7 @@ export default function HeroSection() {
             </motion.h1>
 
             <motion.p
-              className="text-xl text-gray-600 max-w-lg breathing-room-md"
+              className="text-lg text-gray-600 max-w-lg breathing-room-md"
               initial={{ opacity: 0, y: 20 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -82,7 +82,7 @@ export default function HeroSection() {
                 type: "tween"
               }}
             >
-              Первая платформа обмена талантами на базе ИИ, где работа находит тебя. Свайпай, знакомься и собирай команду мечты за минуты, а не месяцы.
+              Платформа обмена талантами на базе ИИ, где работа находит тебя. Свайпай, знакомься, собирай команду мечты и находи проекты за минуты, а не месяцы.
             </motion.p>
           </div>
 
